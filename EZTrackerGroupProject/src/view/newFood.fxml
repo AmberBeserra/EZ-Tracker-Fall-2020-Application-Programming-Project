@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="mainPane2" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.newFood">
+   <children>
+      <Button fx:id="backToUser" layoutX="14.0" layoutY="457.0" mnemonicParsing="false" onAction="#handle2Screen" prefHeight="9.0" prefWidth="70.0" stylesheets="@/controller/application.css" text="Back " textFill="#4f3a3a">
+         <effect>
+            <Glow />
+         </effect>
+      </Button>
+      <TextField fx:id="userInput" layoutX="49.0" layoutY="30.0" prefHeight="114.0" prefWidth="382.0" promptText="Enter your food" />
+      <TextArea fx:id="dailyFood" layoutX="49.0" layoutY="292.0" prefHeight="147.0" prefWidth="382.0" promptText="Daily food displayed here" />
+      <Button fx:id="Breakfast" layoutX="49.0" layoutY="166.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="70.0" text="Breakfast" />
+      <Button fx:id="Lunch" layoutX="140.0" layoutY="166.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="70.0" text="Lunch" />
+      <Button fx:id="Dinner" layoutX="230.0" layoutY="166.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="70.0" text="Dinner" />
+      <TextField fx:id="text" layoutX="331.0" layoutY="154.0" prefHeight="122.0" prefWidth="100.0" />
+   </children>
+</AnchorPane>
