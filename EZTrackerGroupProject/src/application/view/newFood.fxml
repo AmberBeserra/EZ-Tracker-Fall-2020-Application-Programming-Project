@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="mainPane2" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.newFood">
+<AnchorPane fx:id="mainPane2" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.newFood">
    <children>
-      <Button fx:id="backToUser" layoutX="14.0" layoutY="457.0" mnemonicParsing="false" onAction="#handle2Screen" prefHeight="9.0" prefWidth="70.0" stylesheets="@/controller/application.css" text="Back " textFill="#4f3a3a">
+      <Button fx:id="backToUser" layoutX="14.0" layoutY="457.0" mnemonicParsing="false" onAction="#handle2Screen" prefHeight="9.0" prefWidth="70.0" stylesheets="@../view/application.css" text="Back " textFill="#4f3a3a">
          <effect>
             <Glow />
          </effect>

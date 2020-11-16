@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="mainPane2" prefHeight="407.0" prefWidth="381.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LogInController">
+<AnchorPane fx:id="mainPane2" prefHeight="407.0" prefWidth="381.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.LogInController">
    <children>
-      <Button fx:id="newUser" layoutX="128.0" layoutY="288.0" mnemonicParsing="false" onAction="#handle1" prefHeight="37.0" prefWidth="121.0" stylesheets="@/controller/application.css" text="Create User" textFill="#4f3a3a">
+      <Button fx:id="newUser" layoutX="128.0" layoutY="288.0" mnemonicParsing="false" onAction="#handle1" prefHeight="37.0" prefWidth="121.0" stylesheets="@../view/application.css" text="Create User" textFill="#4f3a3a">
          <effect>
             <Glow />
          </effect>

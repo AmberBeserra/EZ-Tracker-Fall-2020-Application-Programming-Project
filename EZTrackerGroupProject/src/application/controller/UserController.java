@@ -1,4 +1,4 @@
-package controller;
+package application.controller;
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,9 +28,9 @@ public class UserController
     @FXML
     public void handle1(ActionEvent event) throws IOException //goes to main user page
     {
-        mainPane = FXMLLoader.load(getClass().getResource("/view/UserPage.fxml"));// pane you are GOING TO
+        mainPane = FXMLLoader.load(getClass().getResource("../view/UserPage.fxml"));// pane you are GOING TO
         Scene scene = new Scene(mainPane);// pane you are GOING TO show
-        scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("../view/application.css").toExternalForm());
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();// pane you are ON
         window.setScene(scene);
         window.show();
@@ -40,9 +40,9 @@ public class UserController
     @FXML
     public void newUser(ActionEvent event) throws IOException 
     {
-    	newuserscene = FXMLLoader.load(getClass().getResource("/view/NewUser.fxml"));// pane you are GOING TO
+    	newuserscene = FXMLLoader.load(getClass().getResource("../view/NewUser.fxml"));// pane you are GOING TO
         Scene scene = new Scene(newuserscene);// pane you are GOING TO show
-        scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("../view/application.css").toExternalForm());
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();// pane you are ON
         window.setScene(scene);
         window.show();
@@ -52,9 +52,9 @@ public class UserController
     @FXML
     public void weekSummary(ActionEvent event) throws IOException 
     {
-    	weekscene = FXMLLoader.load(getClass().getResource("/view/Weekly.fxml"));// pane you are GOING TO
+    	weekscene = FXMLLoader.load(getClass().getResource("../view/Weekly.fxml"));// pane you are GOING TO
         Scene scene = new Scene(weekscene);// pane you are GOING TO show
-        scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("../view/application.css").toExternalForm());
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();// pane you are ON
         window.setScene(scene);
         window.show();
