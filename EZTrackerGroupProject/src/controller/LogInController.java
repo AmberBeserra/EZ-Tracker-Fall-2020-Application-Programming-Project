@@ -1,4 +1,4 @@
-package application;
+package controller;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -24,7 +24,7 @@ public class LogInController
     @FXML
     public void newUser(ActionEvent event) throws IOException 
     {
-        newuser= FXMLLoader.load(getClass().getResource("NewUser.fxml"));// pane you are GOING TO
+        newuser= FXMLLoader.load(getClass().getResource("/view/NewUser.fxml"));// pane you are GOING TO
         Scene scene = new Scene(newuser);// pane you are GOING TO show
         scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();// pane you are ON
@@ -35,7 +35,7 @@ public class LogInController
     @FXML
     void handle2Screen(ActionEvent event) throws IOException  
     {
-    	mainPane2 = FXMLLoader.load(getClass().getResource("LogIn.fxml"));// pane you are GOING TO
+    	mainPane2 = FXMLLoader.load(getClass().getResource("/view/LogIn.fxml"));// pane you are GOING TO
         Scene scene = new Scene(mainPane2);// pane you are GOING TO show
         scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();// pane you are ON
@@ -46,7 +46,7 @@ public class LogInController
     @FXML
     public void handle1(ActionEvent event) throws IOException //goes to main user page(we need to put in method later for login check)
     {
-        mainPane = FXMLLoader.load(getClass().getResource("UserPage.fxml"));// pane you are GOING TO
+        mainPane = FXMLLoader.load(getClass().getResource("/view/UserPage.fxml"));// pane you are GOING TO
         Scene scene = new Scene(mainPane);// pane you are GOING TO show
         scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();// pane you are ON

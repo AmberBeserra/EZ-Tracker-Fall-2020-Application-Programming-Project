@@ -1,9 +1,9 @@
-package application;
+package controller;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import application.NewUser;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,7 +26,7 @@ public class newFood
     @FXML
     void handle2Screen(ActionEvent event) throws IOException  //returns to main user page
     {
-    	  mainPane2 = FXMLLoader.load(getClass().getResource("UserPage.fxml"));// pane you are GOING TO
+    	  mainPane2 = FXMLLoader.load(getClass().getResource("/view/UserPage.fxml"));// pane you are GOING TO
           Scene scene = new Scene(mainPane2);// pane you are GOING TO show
           scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
           Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();// pane you are ON
