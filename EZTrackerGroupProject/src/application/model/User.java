@@ -3,6 +3,17 @@
  */
 package application.model;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+
 /**
  * @author yit031
  *
@@ -37,71 +48,64 @@ public class User {
 		this.userName = userName;
 	}
 
-	public String getName() {
-		return name;
+	public boolean addUser(User newUser) throws ClassNotFoundException, IOException{
+		ArrayList<User> userList =  loadExistingUsers();
+		
+		if(userList.isEmpty()){
+			userList.add(newUser);
+	         FileOutputStream fos= new FileOutputStream("myfile");
+	         ObjectOutputStream oos= new ObjectOutputStream(fos);
+	         oos.writeObject(userList);
+	         oos.close();
+	         fos.close();
+			return true;
+		}
+		else {
+			for(int i = 0; i < userList.size(); i++){
+				if(userList.get(i).getUserName().equals(newUser.getUserName())) 
+					return false;
+				
+			}
+			userList.add(newUser);
+	        FileOutputStream fos= new FileOutputStream("myfile");
+	        ObjectOutputStream oos= new ObjectOutputStream(fos);
+	        oos.writeObject(userList);
+	        oos.close();
+	        fos.close();
+			return true;
+		}
+	}
+	public ArrayList<User> loadExistingUsers() throws IOException, ClassNotFoundException{
+		ArrayList<User> users =  new ArrayList<User>();
+		try {
+			File userList = new File("userList.ser");
+			userList.createNewFile();
+			BufferedReader br;
+			br = new BufferedReader(new FileReader("userList.ser"));
+			if (br.readLine() == null) {
+				br.close();
+				return users;
+			}
+            FileInputStream fis = new FileInputStream("userList.ser");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            users = (ArrayList<User>) ois.readObject();
+            ois.close();
+            fis.close();
+			br.close();
+			return users;
+		} catch (IOException e) {
+			e.printStackTrace();
+			throw e;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			throw e;
+		}
+
+
+ 
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
-	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
-	public int getWeight() {
-		return weight;
-	}
-
-	public void setWeight(int weight) {
-		this.weight = weight;
-	}
-
-	public int getHeight() {
-		return height;
-	}
-
-	public void setHeight(int height) {
-		this.height = height;
-	}
-
-	public int getGoalWeight() {
-		return goalWeight;
-	}
-
-	public void setGoalWeight(int goalWeight) {
-		this.goalWeight = goalWeight;
-	}
-
-	public int getCalorieGoal() {
-		return calorieGoal;
-	}
-
-	public void setCalorieGoal(int calorieGoal) {
-		this.calorieGoal = calorieGoal;
-	}
-
-	public int getCaloriesUsed() {
-		return caloriesUsed;
-	}
-
-	public void setCaloriesUsed(int caloriesUsed) {
-		this.caloriesUsed = caloriesUsed;
 	}
 	
 	
-	
 
-}
