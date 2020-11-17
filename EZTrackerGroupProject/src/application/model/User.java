@@ -53,11 +53,7 @@ public class User {
 		
 		if(userList.isEmpty()){
 			userList.add(newUser);
-	         FileOutputStream fos= new FileOutputStream("myfile");
-	         ObjectOutputStream oos= new ObjectOutputStream(fos);
-	         oos.writeObject(userList);
-	         oos.close();
-	         fos.close();
+			updateUsers(userList);
 			return true;
 		}
 		else {
@@ -67,13 +63,16 @@ public class User {
 				
 			}
 			userList.add(newUser);
-	        FileOutputStream fos= new FileOutputStream("myfile");
-	        ObjectOutputStream oos= new ObjectOutputStream(fos);
-	        oos.writeObject(userList);
-	        oos.close();
-	        fos.close();
+			updateUsers(userList);
 			return true;
 		}
+	}
+	public void updateUsers(ArrayList<User> users) throws IOException{
+        FileOutputStream fos= new FileOutputStream("userList.ser");
+        ObjectOutputStream oos= new ObjectOutputStream(fos);
+        oos.writeObject(users);
+        oos.close();
+        fos.close();
 	}
 	public ArrayList<User> loadExistingUsers() throws IOException, ClassNotFoundException{
 		ArrayList<User> users =  new ArrayList<User>();
