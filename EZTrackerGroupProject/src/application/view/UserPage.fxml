@@ -9,24 +9,22 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="mainPane2" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.NewUser">
+<AnchorPane fx:id="mainPane2" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.UserController">
    <children>
       <Button fx:id="home" layoutX="14.0" layoutY="457.0" mnemonicParsing="false" onAction="#handle2Screen" prefHeight="20.0" prefWidth="86.0" stylesheets="@../view/application.css" text="Back to login" textFill="#4f3a3a">
          <effect>
             <Glow />
          </effect>
       </Button>
-      <Button fx:id="toFood" layoutX="47.0" layoutY="398.0" mnemonicParsing="false" onAction="#foodHandle" prefHeight="25.0" prefWidth="130.0" text="Enter new food" />
-      <LineChart layoutX="47.0" layoutY="141.0" prefHeight="242.0" prefWidth="399.0">
-        <xAxis>
-          <CategoryAxis side="BOTTOM" />
-        </xAxis>
-        <yAxis>
-          <NumberAxis side="LEFT" />
-        </yAxis>
-      </LineChart>
-      <TextArea layoutX="57.0" layoutY="22.0" prefHeight="38.0" prefWidth="199.0" promptText="User's Name" />
-      <TextArea layoutX="57.0" layoutY="68.0" prefHeight="25.0" prefWidth="86.0" promptText="Goal weight" />
-      <Button fx:id="toSummary" layoutX="316.0" layoutY="398.0" mnemonicParsing="false" onAction="#weekSummary" prefHeight="25.0" prefWidth="130.0" text="Weekly Summary" />
+      <Button fx:id="toFood" layoutX="57.0" layoutY="398.0" mnemonicParsing="false" onAction="#foodHandle" prefHeight="25.0" prefWidth="130.0" text="Enter new food" />
+      <Button fx:id="toSummary" layoutX="316.0" layoutY="398.0" mnemonicParsing="false" onAction="#weekSummary" prefHeight="25.0" prefWidth="130.0" text="Monthly Summary" />
+      <PieChart layoutX="58.0" layoutY="122.0" prefHeight="256.0" prefWidth="382.0" title="Daily Nutrition" />
+      <Label fx:id="userlabel" layoutX="57.0" layoutY="34.0" prefHeight="17.0" prefWidth="196.0" text="Your Information">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="goalweightlabel" layoutX="57.0" layoutY="63.0" prefHeight="17.0" prefWidth="74.0" text="Goal Weight:" />
+      <Label fx:id="userweightlabel" layoutX="131.0" layoutY="63.0" text="(Weight Info here)" />
    </children>
 </AnchorPane>

@@ -25,6 +25,7 @@ public class NewUser
 	private AnchorPane mainPane2;
 	private AnchorPane userFood;
 	private AnchorPane summary;
+	private AnchorPane mainPane;
     @FXML
     void handle2Screen(ActionEvent event) throws IOException 
     {
@@ -57,10 +58,19 @@ public class NewUser
           window.setScene(scene);
           window.show();
     }
- }
+ 
+    @FXML
+    public void handle1(ActionEvent event) throws IOException //goes to main user page
+    {
+        mainPane = FXMLLoader.load(getClass().getResource("../view/UserPage.fxml"));// pane you are GOING TO
+        Scene scene = new Scene(mainPane);// pane you are GOING TO show
+        scene.getStylesheets().add(getClass().getResource("../view/application.css").toExternalForm());
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();// pane you are ON
+        window.setScene(scene);
+        window.show();
 
-
-	
+    }
+}
     
     
  
