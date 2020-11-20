@@ -21,6 +21,8 @@ public class UserController
     private AnchorPane mainPane;
 	private AnchorPane newuserscene;
 	private AnchorPane weekscene;
+	private AnchorPane userFood;
+	private AnchorPane mainPane2;
 	
 	@FXML
     private Label text;
@@ -57,8 +59,29 @@ public class UserController
         scene.getStylesheets().add(getClass().getResource("../view/application.css").toExternalForm());
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();// pane you are ON
         window.setScene(scene);
-        window.show();
+        window.show();   
+    }
+    
+    @FXML
+    void handle2Screen(ActionEvent event) throws IOException 
+    {
+    	  mainPane2 = FXMLLoader.load(getClass().getResource("../view/LogIn.fxml"));// pane you are GOING TO
+          Scene scene = new Scene(mainPane2);// pane you are GOING TO show
+          scene.getStylesheets().add(getClass().getResource("../view/application.css").toExternalForm());
+          Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();// pane you are ON
+          window.setScene(scene);
+          window.show();
+    }
 
+    @FXML
+    void foodHandle(ActionEvent event) throws IOException 
+    {
+    	  userFood = FXMLLoader.load(getClass().getResource("../view/newFood.fxml"));// pane you are GOING TO
+          Scene scene = new Scene(userFood);// pane you are GOING TO show
+          scene.getStylesheets().add(getClass().getResource("../view/application.css").toExternalForm());
+          Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();// pane you are ON
+          window.setScene(scene);
+          window.show();
     }
 
 }
