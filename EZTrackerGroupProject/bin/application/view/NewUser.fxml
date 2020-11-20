@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="mainPane2" prefHeight="407.0" prefWidth="381.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.NewUser">
+   <children>
+      <Button fx:id="newUser" layoutX="128.0" layoutY="288.0" mnemonicParsing="false" onAction="#handle1" prefHeight="37.0" prefWidth="121.0" stylesheets="@../view/application.css" text="Create User" textFill="#4f3a3a">
+         <effect>
+            <Glow />
+         </effect>
+      </Button>
+      <TextField fx:id="newUserName" layoutX="114.0" layoutY="42.0" promptText="Enter a username" />
+      <TextField fx:id="newName" layoutX="114.0" layoutY="76.0" promptText="Enter your full name" />
+      <TextField fx:id="newAge" layoutX="114.0" layoutY="112.0" promptText="Enter your age" />
+      <TextField fx:id="newGender" layoutX="114.0" layoutY="146.0" promptText="Enter your gender" />
+      <TextField fx:id="newWeight" layoutX="114.0" layoutY="179.0" promptText="Enter your current weight" />
+      <TextField fx:id="newHeight" layoutX="114.0" layoutY="212.0" promptText="Enter your height" />
+      <TextField fx:id="goalWeight" layoutX="114.0" layoutY="247.0" promptText="Enter your goal weight" />
+      <Button fx:id="logIn" layoutX="141.0" layoutY="331.0" mnemonicParsing="false" onAction="#handle2Screen" text="I have a profile" textFill="#4f3a3a" />
+   </children>
+</AnchorPane>
