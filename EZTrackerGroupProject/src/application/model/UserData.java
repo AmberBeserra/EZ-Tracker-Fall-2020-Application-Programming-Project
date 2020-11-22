@@ -10,12 +10,17 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-public class Data
+public class UserData
 {
 	public void printExisting() throws ClassNotFoundException, IOException{
 		ArrayList<User> userList =  loadExistingUsers();
 		for(int i = 0; i < userList.size(); i++) {
 			System.out.println(userList.get(i).getUserName());
+			System.out.println(userList.get(i).getName());
+			System.out.println(userList.get(i).getAge());
+			System.out.println(userList.get(i).getGender());
+			System.out.println(userList.get(i).getWeight());
+			System.out.println(userList.get(i).getHeight());
 			
 		}
 	}

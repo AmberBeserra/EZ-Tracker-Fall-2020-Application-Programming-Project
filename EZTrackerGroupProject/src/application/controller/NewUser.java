@@ -12,7 +12,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Properties;
 
-import application.model.Data;
+import application.model.UserData;
 import application.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -58,9 +58,31 @@ public class NewUser
 		gWeight = goalWeight.getText();
 
 		if(validateInput(userN, name, age, gender, weight, height, gWeight)){
-			Data data= new Data();
+			UserData data= new UserData();
 			User user = new User(userN, name, age, gender, weight, height, gWeight);
-			data.addUser(user);
+			if(data.addUser(user)){
+				Alert userCreated = new Alert(AlertType.NONE);
+				userCreated.setAlertType(AlertType.CONFIRMATION);
+				userCreated.setTitle("User Added");
+				userCreated.setHeaderText("User added successfully!");
+				userCreated.setContentText("You can now login and start tracking!");
+				userCreated.show();
+				
+				mainPane2 = FXMLLoader.load(getClass().getResource("../view/LogIn.fxml"));// pane you are GOING TO
+				Scene scene = new Scene(mainPane2);// pane you are GOING TO show
+				scene.getStylesheets().add(getClass().getResource("../view/application.css").toExternalForm());
+				Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();// pane you are ON
+				window.setScene(scene);
+				window.show();
+			}
+			else {
+				Alert creationFailed = new Alert(AlertType.NONE);
+				creationFailed.setAlertType(AlertType.ERROR);
+				creationFailed.setTitle("ERROR");
+				creationFailed.setHeaderText("Unable to create user!");
+				creationFailed.setContentText("User already exists, choose a different username!");
+				creationFailed.show();
+			}
 		}
 
 	}

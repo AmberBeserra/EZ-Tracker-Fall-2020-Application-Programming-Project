@@ -2,7 +2,7 @@ package application;
 	
 import java.io.IOException;
 
-import application.model.Data;
+import application.model.UserData;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -28,7 +28,7 @@ public class Main extends Application
 	
 	public static void main(String[] args) throws ClassNotFoundException, IOException
 	{
-		Data data = new Data();
+		UserData data = new UserData();
 		data.printExisting();
 		launch(args);
 
