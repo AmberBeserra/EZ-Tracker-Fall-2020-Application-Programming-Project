@@ -8,9 +8,12 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Properties;
 
+import application.model.Data;
+import application.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,56 +26,112 @@ public class NewUser
 {
 	@FXML
 	private AnchorPane mainPane2;
-	private AnchorPane userFood;
-	private AnchorPane summary;
-	private AnchorPane mainPane;
-    @FXML
-    void handle2Screen(ActionEvent event) throws IOException 
-    {
-    	  mainPane2 = FXMLLoader.load(getClass().getResource("../view/LogIn.fxml"));// pane you are GOING TO
-          Scene scene = new Scene(mainPane2);// pane you are GOING TO show
-          scene.getStylesheets().add(getClass().getResource("../view/application.css").toExternalForm());
-          Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();// pane you are ON
-          window.setScene(scene);
-          window.show();
-    }
 
-    @FXML
-    void foodHandle(ActionEvent event) throws IOException 
-    {
-    	  userFood = FXMLLoader.load(getClass().getResource("../view/newFood.fxml"));// pane you are GOING TO
-          Scene scene = new Scene(userFood);// pane you are GOING TO show
-          scene.getStylesheets().add(getClass().getResource("../view/application.css").toExternalForm());
-          Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();// pane you are ON
-          window.setScene(scene);
-          window.show();
-    }
-    
-    @FXML
-    void weekSummary(ActionEvent event) throws IOException 
-    {
-    	  summary = FXMLLoader.load(getClass().getResource("../view/Weekly.fxml"));// pane you are GOING TO
-          Scene scene = new Scene(summary);// pane you are GOING TO show
-          scene.getStylesheets().add(getClass().getResource("../view/application.css").toExternalForm());
-          Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();// pane you are ON
-          window.setScene(scene);
-          window.show();
-    }
- 
-    @FXML
-    public void handle1(ActionEvent event) throws IOException //goes to main user page
-    {
-        mainPane = FXMLLoader.load(getClass().getResource("../view/UserPage.fxml"));// pane you are GOING TO
-        Scene scene = new Scene(mainPane);// pane you are GOING TO show
-        scene.getStylesheets().add(getClass().getResource("../view/application.css").toExternalForm());
-        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();// pane you are ON
-        window.setScene(scene);
-        window.show();
+	@FXML
+	private TextField newUserName;
+	@FXML
+	private TextField newName;
+	@FXML
+	private TextField newAge;
+	@FXML
+	private TextField newGender;
+	@FXML
+	private TextField newWeight;
+	@FXML
+	private TextField newHeight;
+	@FXML
+	private TextField goalWeight;
 
-    }
+
+	@FXML
+	public void handle1(ActionEvent event) throws IOException //goes to main user page
+	, ClassNotFoundException
+	{
+		String userN, name, age, gender, weight, height, gWeight; 
+
+		userN = newUserName.getText();
+		name = newName.getText();
+		age = newAge.getText();
+		gender = newGender.getText();
+		weight = newWeight.getText();
+		height = newHeight.getText();
+		gWeight = goalWeight.getText();
+
+		if(validateInput(userN, name, age, gender, weight, height, gWeight)){
+			Data data= new Data();
+			User user = new User(userN, name, age, gender, weight, height, gWeight);
+			data.addUser(user);
+		}
+
+	}
+	@FXML
+	void handle2Screen(ActionEvent event) throws IOException 
+	{
+		mainPane2 = FXMLLoader.load(getClass().getResource("../view/LogIn.fxml"));// pane you are GOING TO
+		Scene scene = new Scene(mainPane2);// pane you are GOING TO show
+		scene.getStylesheets().add(getClass().getResource("../view/application.css").toExternalForm());
+		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();// pane you are ON
+		window.setScene(scene);
+		window.show();
+	}
+
+	boolean validateInput(String user, String name, String age, String gen, String weight, String height, String gWeight){
+		int issueCode = 0;
+		//check if empty input
+		if(user.isEmpty()||name.isEmpty()||age.isEmpty()||gen.isEmpty()||weight.isEmpty()||height.isEmpty()||gWeight.isEmpty()){
+			issueCode = 1;
+		}
+		else{
+			try{
+				if(Integer.parseInt(age) <= 0){
+					issueCode = 2;
+				}
+				if(Integer.parseInt(weight) <= 0){
+					issueCode = 2;
+				}
+				if(Integer.parseInt(height) <= 0){
+					issueCode = 2;
+				}
+				if(Integer.parseInt(gWeight) <= 0){
+					issueCode = 2;
+				}
+			} catch (NumberFormatException e){
+				issueCode= 3;
+			}
+		}
+		switch(issueCode) {
+		case 1:
+			Alert emptyField = new Alert(AlertType.NONE);
+			emptyField.setAlertType(AlertType.ERROR);
+			emptyField.setTitle("ERROR");
+			emptyField.setHeaderText("Unable to create user!");
+			emptyField.setContentText("Please make sure every field has a value to create a new user");
+			emptyField.show();
+			return false;
+		case 2:
+			Alert valueError = new Alert(AlertType.NONE);
+			valueError.setAlertType(AlertType.ERROR);
+			valueError.setTitle("ERROR");
+			valueError.setHeaderText("Unable to create user!");
+			valueError.setContentText("Please make sure every field with a number has a value above zero!");
+			valueError.show();
+			return false;
+		case 3:
+			Alert notInt = new Alert(AlertType.NONE);
+			notInt.setAlertType(AlertType.ERROR);
+			notInt.setTitle("ERROR");
+			notInt.setHeaderText("Unable to create user!");
+			notInt.setContentText("Please make sure every field requiring an integer has one!");
+			notInt.show();
+			return false;
+		default:
+			return true;
+
+		}
+	}
 }
-    
-    
- 
+
+
+
 
 
