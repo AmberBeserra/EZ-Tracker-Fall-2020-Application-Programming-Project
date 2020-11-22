@@ -12,6 +12,14 @@ import java.util.ArrayList;
 
 public class UserData
 {
+	public boolean userExists(String username) throws ClassNotFoundException, IOException{
+		ArrayList<User> userList =  loadExistingUsers();
+		for(int i = 0; i < userList.size(); i++){
+			if(userList.get(i).getUserName().equals(username)) 
+				return true;
+		}
+		return false;
+	}
 	public void printExisting() throws ClassNotFoundException, IOException{
 		ArrayList<User> userList =  loadExistingUsers();
 		for(int i = 0; i < userList.size(); i++) {
@@ -35,8 +43,7 @@ public class UserData
 		else {
 			for(int i = 0; i < userList.size(); i++){
 				if(userList.get(i).getUserName().equals(newUser.getUserName())) 
-					return false;
-				
+					return false;	
 			}
 			userList.add(newUser);
 			updateUsers(userList);
