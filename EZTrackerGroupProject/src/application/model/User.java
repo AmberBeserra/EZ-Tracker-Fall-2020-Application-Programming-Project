@@ -41,6 +41,7 @@ public class User implements Serializable{
 		this.height = Integer.parseInt(height);
 		this.goalWeight = Integer.parseInt(goalWeight);
 		this.isEmpty = false;
+		this.calorieGoal = calcCalories(gender,Integer.parseInt(age),Integer.parseInt(weight),Integer.parseInt(height));
 	}
 
 	public String getUserName() {
@@ -116,6 +117,24 @@ public class User implements Serializable{
 	}
 	public Boolean getIsEmpty() {
 		return isEmpty;
+	}
+	public int calcCalories(String gender,int age, int weight, int height){
+		int h = (int) (height*2.54);
+		int w = (int) (weight*.453592);
+		int BMR;
+		int TDEE;
+		int totalCalories;
+		
+		if(gender.equalsIgnoreCase("M")){
+			BMR =(int) (66+(13.7*w)+(5*h)-(6.8*age));
+		}
+		else {
+			BMR =(int) (655+(9.6*w)+(1.8*h)-(4.7*age));
+		}
+		TDEE=(int) (BMR*1.2);
+		
+		return TDEE;
+		
 	}
 	}
 	

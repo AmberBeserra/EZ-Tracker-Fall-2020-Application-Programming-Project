@@ -120,6 +120,9 @@ public class NewUserController
 			} catch (NumberFormatException e){
 				issueCode= 3;
 			}
+			if(!gen.equalsIgnoreCase("M")&&!gen.equalsIgnoreCase("F")){
+				issueCode = 4;
+			}
 		}
 		switch(issueCode) {
 		case 1:
@@ -145,6 +148,14 @@ public class NewUserController
 			notInt.setHeaderText("Unable to create user!");
 			notInt.setContentText("Please make sure every field requiring an integer has one!");
 			notInt.show();
+			return false;
+		case 4:
+			Alert genderMF = new Alert(AlertType.NONE);
+			genderMF.setAlertType(AlertType.ERROR);
+			genderMF.setTitle("ERROR");
+			genderMF.setHeaderText("Unable to create user!");
+			genderMF.setContentText("Please make sure to select M or F for gender for BMR/TDEE calculations!");
+			genderMF.show();
 			return false;
 		default:
 			return true;

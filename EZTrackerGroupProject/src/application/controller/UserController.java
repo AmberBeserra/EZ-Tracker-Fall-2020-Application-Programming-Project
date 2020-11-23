@@ -62,11 +62,11 @@ public class UserController
     @FXML
     private Label userHeight;
 
-
-
     @FXML
     private Label goalweightlabel;
 	
+    @FXML
+    private Label totalCalories;
    
 
     @FXML
@@ -109,9 +109,10 @@ public class UserController
     	user = data.getUser(username);
     	userlabel.setText(user.getName());
     	currentUser.setText(user.getUserName());
-    	currentWeight.setText(Integer.toString(user.getWeight()));
-    	goalWeight.setText(Integer.toString(user.getGoalWeight()));
-    	userHeight.setText(Integer.toString(user.getHeight()));
+    	currentWeight.setText(Integer.toString(user.getWeight())+"lbs");
+    	goalWeight.setText(Integer.toString(user.getGoalWeight())+"lbs");
+    	userHeight.setText(Integer.toString(user.getHeight())+"in");
+    	totalCalories.setText(Integer.toString(user.getCalorieGoal()));
 
     }
 

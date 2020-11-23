@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -20,41 +21,35 @@ public class newFood
 
 	
 	@FXML
-	private AnchorPane mainPane2;
+	private AnchorPane userScene;
 	
 	
     @FXML
-    void CompleteMeal(ActionEvent event) throws IOException  //returns to main user page
+    void toUserScene(ActionEvent event) throws IOException  //returns to main user page
+, ClassNotFoundException
     {
-    	  mainPane2 = FXMLLoader.load(getClass().getResource("../view/UserPage.fxml"));// pane you are GOING TO
-          Scene scene = new Scene(mainPane2);// pane you are GOING TO show
-          scene.getStylesheets().add(getClass().getResource("../view/application.css").toExternalForm());
-          Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();// pane you are ON
-          window.setScene(scene);
-          window.show();
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/UserPage.fxml"));
+		Parent userScene = loader.load();
+		UserController controller = loader.getController();
+		controller.loadStats(LogInController.username);
+		//userScene = FXMLLoader.load(getClass().getResource("../view/UserPage.fxml"));// pane you are GOING TO
+		Scene scene = new Scene(userScene);// pane you are GOING TO show
+		scene.getStylesheets().add(getClass().getResource("../view/application.css").toExternalForm());
+		Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();// pane you are ON
+		window.setScene(scene);
+		window.show();
+
           
     }
     
     @FXML
-    void handle2Screen(ActionEvent event) throws IOException  //returns to main user page
-    {
-    	  mainPane2 = FXMLLoader.load(getClass().getResource("../view/UserPage.fxml"));// pane you are GOING TO
-          Scene scene = new Scene(mainPane2);// pane you are GOING TO show
-          scene.getStylesheets().add(getClass().getResource("../view/application.css").toExternalForm());
-          Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();// pane you are ON
-          window.setScene(scene);
-          window.show();
-          
-    }
-    
-    @FXML
-    void newFood(ActionEvent event) throws IOException  //returns to main user page
+    void completeMeal(ActionEvent event) throws IOException  //returns to main user page
     {
     	
     }
     
     @FXML
-    void addMeal(ActionEvent event) throws IOException  //returns to main user page
+    void addToMeal(ActionEvent event) throws IOException  //returns to main user page
     {
     	
     }
