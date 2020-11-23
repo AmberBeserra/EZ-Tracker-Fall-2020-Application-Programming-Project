@@ -17,15 +17,44 @@ import javafx.stage.Stage;
 
 public class UserController
 {
-	@FXML
-    private AnchorPane mainPane;
-	private AnchorPane newuserscene;
-	private AnchorPane weekscene;
-	private AnchorPane userFood;
-	private AnchorPane mainPane2;
-	
-	@FXML
-    private Label text;
+    @FXML
+    private Label userlabel;
+
+    @FXML
+    private TextField newWeight;
+
+    @FXML
+    private Label currentWeight;
+
+    @FXML
+    private Button update;
+
+    @FXML
+    private Label goalWeight;
+
+    @FXML
+    private Button home;
+
+    @FXML
+    private Button toSummary;
+
+    @FXML
+    private Label userweightlabel;
+
+    @FXML
+    private Label currentUser;
+
+    @FXML
+    private Button toFood;
+
+    @FXML
+    private Label userHeight;
+
+    @FXML
+    private AnchorPane mainPane2;
+
+    @FXML
+    private Label goalweightlabel;
 	
     @FXML
     public void handle1(ActionEvent event) throws IOException //goes to main user page
