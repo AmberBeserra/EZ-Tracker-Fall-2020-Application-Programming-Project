@@ -82,8 +82,14 @@ public class UserData
 			e.printStackTrace();
 			throw e;
 		}
-
-
-
+	}
+	public User getUser(String username) throws ClassNotFoundException, IOException{
+		ArrayList<User> userList =  loadExistingUsers();
+		User user = new User();
+		for(int i = 0; i < userList.size(); i++){
+			if(userList.get(i).getUserName().equals(username)) 
+				return userList.get(i);	
+		} 
+		return user;
 	}
 }

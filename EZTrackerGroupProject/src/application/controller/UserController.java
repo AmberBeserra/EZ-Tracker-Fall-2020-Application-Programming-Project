@@ -4,12 +4,16 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.model.User;
+import application.model.UserData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -79,6 +83,7 @@ public class UserController
     @FXML
     void toLoginScene(ActionEvent event) throws IOException 
     {
+    	LogInController.username = null;
     	  loginScene = FXMLLoader.load(getClass().getResource("../view/LogIn.fxml"));// pane you are GOING TO
           Scene scene = new Scene(loginScene);// pane you are GOING TO show
           scene.getStylesheets().add(getClass().getResource("../view/application.css").toExternalForm());
@@ -96,6 +101,18 @@ public class UserController
           Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();// pane you are ON
           window.setScene(scene);
           window.show();
+    }
+    @FXML
+    public void loadStats(String username) throws ClassNotFoundException, IOException{
+    	UserData data = new UserData();
+    	User user = new User();
+    	user = data.getUser(username);
+    	userlabel.setText(user.getName());
+    	currentUser.setText(user.getUserName());
+    	currentWeight.setText(Integer.toString(user.getWeight()));
+    	goalWeight.setText(Integer.toString(user.getGoalWeight()));
+    	userHeight.setText(Integer.toString(user.getHeight()));
+
     }
 
     @FXML

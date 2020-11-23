@@ -25,7 +25,12 @@ public class User implements Serializable{
 	private int goalWeight;
 	private int calorieGoal;
 	private int caloriesUsed;
+	private Boolean isEmpty;
 	
+	public User(){
+		super();
+		this.isEmpty = true;
+	}
 	public User(String userName, String name, String age, String gender, String weight, String height, String goalWeight) {
 		super();
 		this.userName = userName;
@@ -35,6 +40,7 @@ public class User implements Serializable{
 		this.weight = Integer.parseInt(weight);
 		this.height = Integer.parseInt(height);
 		this.goalWeight = Integer.parseInt(goalWeight);
+		this.isEmpty = false;
 	}
 
 	public String getUserName() {
@@ -108,7 +114,9 @@ public class User implements Serializable{
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-
+	public Boolean getIsEmpty() {
+		return isEmpty;
+	}
 	}
 	
 	
