@@ -10,9 +10,6 @@
 <AnchorPane fx:id="foodScene" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.newFood">
    <children>
       <Button fx:id="backToUser" layoutX="14.0" layoutY="457.0" mnemonicParsing="false" onAction="#handle2Screen" prefHeight="9.0" prefWidth="70.0" stylesheets="@../view/application.css" text="Back " textFill="#4f3a3a">
-         <effect>
-            <Glow />
-         </effect>
       </Button>
       <TextField layoutX="91.0" layoutY="25.0" prefHeight="81.0" prefWidth="165.0" promptText="Enter Information" />
       <TextField layoutX="91.0" layoutY="124.0" prefHeight="81.0" prefWidth="165.0" promptText="Enter Information" />

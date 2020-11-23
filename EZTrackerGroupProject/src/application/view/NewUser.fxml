@@ -10,10 +10,7 @@
 
 <AnchorPane fx:id="newUserScene" prefHeight="407.0" prefWidth="381.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.NewUserController">
    <children>
-      <Button fx:id="newUser" layoutX="130.0" layoutY="306.0" mnemonicParsing="false" onAction="#createUser" prefHeight="37.0" prefWidth="121.0" stylesheets="@../view/application.css" text="Create User" textFill="#4f3a3a">
-         <effect>
-            <Glow />
-         </effect>
+      <Button fx:id="newUser" layoutX="130.0" layoutY="306.0" mnemonicParsing="false" onAction="#createUser" prefHeight="37.0" prefWidth="121.0" stylesheets="@../view/application.css" text="Create User">
       </Button>
       <TextField fx:id="newUserName" layoutX="104.0" layoutY="32.0" prefHeight="25.0" prefWidth="174.0" promptText="Enter a username" />
       <TextField fx:id="newAge" layoutX="104.0" layoutY="110.0" prefHeight="25.0" prefWidth="174.0" promptText="Enter your age" />
