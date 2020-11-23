@@ -9,22 +9,30 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="mainPane2" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.UserController">
+<AnchorPane fx:id="userScene" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.UserController">
    <children>
-      <Button fx:id="home" layoutX="14.0" layoutY="457.0" mnemonicParsing="false" onAction="#handle2Screen" prefHeight="20.0" prefWidth="86.0" stylesheets="@../view/application.css" text="Back to login" textFill="#4f3a3a">
+      <Button fx:id="home" layoutX="14.0" layoutY="457.0" mnemonicParsing="false" onAction="#toLoginScene" prefHeight="20.0" prefWidth="86.0" stylesheets="@../view/application.css" text="Back to login" textFill="#4f3a3a">
          <effect>
             <Glow />
          </effect>
       </Button>
-      <Button fx:id="toFood" layoutX="57.0" layoutY="398.0" mnemonicParsing="false" onAction="#foodHandle" prefHeight="25.0" prefWidth="130.0" text="Enter new food" />
-      <Button fx:id="toSummary" layoutX="316.0" layoutY="398.0" mnemonicParsing="false" onAction="#weekSummary" prefHeight="25.0" prefWidth="130.0" text="Monthly Summary" />
+      <Button fx:id="toFood" layoutX="57.0" layoutY="398.0" mnemonicParsing="false" onAction="#toFoodScene" prefHeight="25.0" prefWidth="130.0" text="Enter new food" />
+      <Button fx:id="toSummary" layoutX="316.0" layoutY="398.0" mnemonicParsing="false" onAction="#toMonthlySummary" prefHeight="25.0" prefWidth="130.0" text="Monthly Summary" />
       <PieChart layoutX="58.0" layoutY="122.0" prefHeight="256.0" prefWidth="382.0" title="Daily Nutrition" />
-      <Label fx:id="userlabel" layoutX="57.0" layoutY="34.0" prefHeight="17.0" prefWidth="196.0" text="Your Information">
+      <Label fx:id="userlabel" layoutX="58.0" layoutY="25.0" prefHeight="30.0" prefWidth="161.0" text="Your Information">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="goalweightlabel" layoutX="57.0" layoutY="63.0" prefHeight="17.0" prefWidth="74.0" text="Goal Weight:" />
-      <Label fx:id="userweightlabel" layoutX="131.0" layoutY="63.0" text="(Weight Info here)" />
+      <Label fx:id="goalweightlabel" layoutX="196.0" layoutY="55.0" prefHeight="17.0" prefWidth="74.0" text="Goal Weight:" />
+      <Label fx:id="userweightlabel" layoutX="131.0" layoutY="63.0" />
+      <Button fx:id="update" layoutX="57.0" layoutY="97.0" mnemonicParsing="false" onAction="#updateWeight" text="Update Weight" />
+      <Label fx:id="goalWeight" layoutX="270.0" layoutY="55.0" prefHeight="17.0" prefWidth="38.0" text="//" />
+      <Label fx:id="currentUser" layoutX="381.0" layoutY="461.0" prefHeight="17.0" prefWidth="97.0" text="//" />
+      <Label layoutX="57.0" layoutY="72.0" prefHeight="17.0" prefWidth="44.0" text="Height: " />
+      <Label layoutX="57.0" layoutY="55.0" text="Current Weight:" />
+      <Label fx:id="currentWeight" layoutX="149.0" layoutY="55.0" text="//" />
+      <Label fx:id="userHeight" layoutX="101.0" layoutY="72.0" text="//" />
+      <TextField fx:id="newWeight" layoutX="160.0" layoutY="97.0" prefHeight="25.0" prefWidth="97.0" promptText="update weight" />
    </children>
 </AnchorPane>

@@ -22,7 +22,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class NewUser
+public class NewUserController
 {
 	@FXML
 	private AnchorPane mainPane2;
@@ -44,7 +44,7 @@ public class NewUser
 
 
 	@FXML
-	public void handle1(ActionEvent event) throws IOException //goes to main user page
+	public void createUser(ActionEvent event) throws IOException //goes to main user page
 	, ClassNotFoundException
 	{
 		String userN, name, age, gender, weight, height, gWeight; 
@@ -87,7 +87,7 @@ public class NewUser
 
 	}
 	@FXML
-	void handle2Screen(ActionEvent event) throws IOException 
+	void toLoginScene(ActionEvent event) throws IOException 
 	{
 		mainPane2 = FXMLLoader.load(getClass().getResource("../view/LogIn.fxml"));// pane you are GOING TO
 		Scene scene = new Scene(mainPane2);// pane you are GOING TO show

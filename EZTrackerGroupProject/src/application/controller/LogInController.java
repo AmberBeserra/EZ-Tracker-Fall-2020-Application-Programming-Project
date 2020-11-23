@@ -21,24 +21,24 @@ import javafx.fxml.FXMLLoader;
 
 public class LogInController
 {	@FXML
-	private AnchorPane mainPane;
+	private AnchorPane userScene;
 	@FXML
-	private AnchorPane newuser;
+	private AnchorPane newUserScene;
 	@FXML
 	private TextField userName;
 	
 	static String username;
 	
     @FXML
-    public void handle1(ActionEvent event) throws IOException //goes to main user page(we need to put in method later for login check)
+    public void toUserScene(ActionEvent event) throws IOException //goes to main user page(we need to put in method later for login check)
 , ClassNotFoundException
     {
     	UserData data = new UserData();
     	username = userName.getText();
     	
     	if(data.userExists(username)){
-            mainPane = FXMLLoader.load(getClass().getResource("../view/UserPage.fxml"));// pane you are GOING TO
-            Scene scene = new Scene(mainPane);// pane you are GOING TO show
+            userScene = FXMLLoader.load(getClass().getResource("../view/UserPage.fxml"));// pane you are GOING TO
+            Scene scene = new Scene(userScene);// pane you are GOING TO show
             scene.getStylesheets().add(getClass().getResource("../view/application.css").toExternalForm());
             Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();// pane you are ON
             window.setScene(scene);
@@ -55,10 +55,10 @@ public class LogInController
     }
     
     @FXML
-    public void newUser(ActionEvent event) throws IOException 
+    public void toNewUserScene(ActionEvent event) throws IOException 
     {
-        newuser= FXMLLoader.load(getClass().getResource("../view/NewUser.fxml"));// pane you are GOING TO
-        Scene scene = new Scene(newuser);// pane you are GOING TO show
+        newUserScene= FXMLLoader.load(getClass().getResource("../view/NewUser.fxml"));// pane you are GOING TO
+        Scene scene = new Scene(newUserScene);// pane you are GOING TO show
         scene.getStylesheets().add(getClass().getResource("../view/application.css").toExternalForm());
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();// pane you are ON
         window.setScene(scene);
