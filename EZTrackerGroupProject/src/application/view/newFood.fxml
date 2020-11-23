@@ -23,7 +23,8 @@
       <Label layoutX="21.0" layoutY="148.0" prefHeight="17.0" prefWidth="41.0" text="Carbs" />
       <Label layoutX="21.0" layoutY="242.0" text="Fat" />
       <Label layoutX="21.0" layoutY="338.0" prefHeight="17.0" prefWidth="48.0" text="Protein" />
-      <Button layoutX="325.0" layoutY="337.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="103.0" text="Add To Meal" />
-      <Button layoutX="325.0" layoutY="379.0" mnemonicParsing="false" onAction="#handle2Screen" prefHeight="36.0" prefWidth="103.0" text="Done With Meal" />
+      <Button fx:id="addMeal" layoutX="325.0" layoutY="337.0" mnemonicParsing="false" onAction="#addMeal" prefHeight="36.0" prefWidth="103.0" text="Add To Meal" />
+      <Button fx:id="mealComplete" layoutX="325.0" layoutY="379.0" mnemonicParsing="false" onAction="#CompleteMeal" prefHeight="36.0" prefWidth="103.0" text="Done With Meal" />
+      <Label fx:id="currentUser" layoutX="377.0" layoutY="461.0" prefHeight="17.0" prefWidth="73.0" text="//" />
    </children>
 </AnchorPane>

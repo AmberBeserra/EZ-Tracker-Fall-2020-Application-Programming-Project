@@ -84,4 +84,11 @@ public class UserController
           window.show();
     }
 
+    @FXML
+    void updateWeight(ActionEvent event) throws IOException 
+    {
+    	//change the current weight and update the current weight displayed on click
+    	
+    }
+    
 }

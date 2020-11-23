@@ -11,7 +11,7 @@
 <AnchorPane fx:id="mainPane" prefHeight="327.0" prefWidth="406.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.WeekySummaryController">
    <children>
       <Pane layoutX="14.0" layoutY="14.0" prefHeight="32.0" prefWidth="208.0" />
-      <LineChart fx:id="weekChart" layoutX="47.0" layoutY="21.0" prefHeight="267.0" prefWidth="326.0" title="Weekly summary">
+      <LineChart fx:id="weekChart" layoutX="47.0" layoutY="21.0" prefHeight="267.0" prefWidth="326.0" title="Monthly Summary">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
@@ -20,5 +20,6 @@
         </yAxis>
       </LineChart>
       <Button fx:id="backButton" layoutX="14.0" layoutY="288.0" mnemonicParsing="false" onAction="#handle1" text="Back" />
+      <Label fx:id="currentUser" layoutX="305.0" layoutY="292.0" prefHeight="17.0" prefWidth="73.0" text="//" />
    </children>
 </AnchorPane>

@@ -24,6 +24,18 @@ public class newFood
 	
 	
     @FXML
+    void CompleteMeal(ActionEvent event) throws IOException  //returns to main user page
+    {
+    	  mainPane2 = FXMLLoader.load(getClass().getResource("../view/UserPage.fxml"));// pane you are GOING TO
+          Scene scene = new Scene(mainPane2);// pane you are GOING TO show
+          scene.getStylesheets().add(getClass().getResource("../view/application.css").toExternalForm());
+          Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();// pane you are ON
+          window.setScene(scene);
+          window.show();
+          
+    }
+    
+    @FXML
     void handle2Screen(ActionEvent event) throws IOException  //returns to main user page
     {
     	  mainPane2 = FXMLLoader.load(getClass().getResource("../view/UserPage.fxml"));// pane you are GOING TO
@@ -32,7 +44,18 @@ public class newFood
           Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();// pane you are ON
           window.setScene(scene);
           window.show();
+          
     }
     
-
+    @FXML
+    void newFood(ActionEvent event) throws IOException  //returns to main user page
+    {
+    	
+    }
+    
+    @FXML
+    void addMeal(ActionEvent event) throws IOException  //returns to main user page
+    {
+    	
+    }
 }
