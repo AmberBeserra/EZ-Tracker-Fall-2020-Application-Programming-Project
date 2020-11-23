@@ -11,7 +11,7 @@
 
 <AnchorPane fx:id="userScene" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.UserController">
    <children>
-      <Button fx:id="home" layoutX="14.0" layoutY="457.0" mnemonicParsing="false" onAction="#toLoginScene" prefHeight="20.0" prefWidth="86.0" stylesheets="@../view/application.css" text="Back to login" textFill="#4f3a3a">
+      <Button fx:id="home" layoutX="14.0" layoutY="457.0" mnemonicParsing="false" onAction="#toLoginScene" prefHeight="25.0" prefWidth="55.0" stylesheets="@../view/application.css" text="Logout" textFill="#4f3a3a">
          <effect>
             <Glow />
          </effect>
