@@ -15,7 +15,6 @@
       <TextField fx:id="carbs" layoutX="91.0" layoutY="189.0" prefHeight="60.0" prefWidth="165.0" promptText="Enter carbs in grams" />
       <TextField fx:id="fat" layoutX="91.0" layoutY="279.0" prefHeight="60.0" prefWidth="165.0" promptText="Enter fat in grams" />
       <TextField fx:id="protein" layoutX="91.0" layoutY="359.0" prefHeight="60.0" prefWidth="165.0" promptText="Enter protein in grams" />
-      <TextField fx:id="output" layoutX="279.0" layoutY="25.0" prefHeight="284.0" prefWidth="195.0" promptText="Will Output a Confirmation Msg" />
       <Label layoutX="22.0" layoutY="103.0" prefHeight="17.0" prefWidth="103.0" text="Calories" />
       <Label layoutX="21.0" layoutY="189.0" prefHeight="17.0" prefWidth="41.0" text="Carbs" />
       <Label layoutX="22.0" layoutY="279.0" text="Fat" />
@@ -25,5 +24,6 @@
       <Label fx:id="currentUser" layoutX="377.0" layoutY="461.0" prefHeight="17.0" prefWidth="73.0" text="//" />
       <TextField fx:id="foodName" layoutX="91.0" layoutY="25.0" prefHeight="60.0" prefWidth="165.0" promptText="Enter name of food" />
       <Label layoutX="22.0" layoutY="25.0" prefHeight="17.0" prefWidth="103.0" text="Food" />
+      <TextArea fx:id="output" layoutX="279.0" layoutY="25.0" prefHeight="290.0" prefWidth="195.0" promptText="Will Output a Confirmation Msg" />
    </children>
 </AnchorPane>
