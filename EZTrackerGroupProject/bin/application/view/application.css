@@ -2,21 +2,3 @@
 {
 	-fx-background-color:#add8e6; 
 }
-userlabel
-{
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-font-size: 20;
-}
-goalweightlabel
-{
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-font-size: 12;
-}
-userweightlabel
-{
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-font-size: 12;
-}
