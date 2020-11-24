@@ -37,6 +37,9 @@ public class UserController
     private AnchorPane foodScene;
     
     @FXML
+    private AnchorPane UpdateUser;
+    
+    @FXML
     private Label userlabel;
 
     @FXML
@@ -118,6 +121,21 @@ public class UserController
           window.setScene(scene);
           window.show();
     }
+    
+    @FXML
+    void toUpdateUser(ActionEvent event) throws ClassNotFoundException, IOException 
+    {
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/UpdateUser.fxml"));
+		Parent UpdateUser = loader.load();
+		UpdateUserController controller = loader.getController();
+		controller.loadStats(LogInController.username);	
+          Scene scene = new Scene(UpdateUser);// pane you are GOING TO show
+          scene.getStylesheets().add(getClass().getResource("../view/application.css").toExternalForm());
+          Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();// pane you are ON
+          window.setScene(scene);
+          window.show();
+    }
+    
     @FXML
     public void loadStats(String username) throws ClassNotFoundException, IOException{
     	UserData data = new UserData();

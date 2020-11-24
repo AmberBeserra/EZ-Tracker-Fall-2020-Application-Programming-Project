@@ -12,18 +12,19 @@
 
 <AnchorPane fx:id="userScene" prefHeight="500.0" prefWidth="512.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.UserController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#99cfe0" height="500.0" layoutX="378.0" stroke="#99cfe0" strokeType="INSIDE" width="139.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#99cfe0" height="500.0" layoutX="397.0" stroke="#99cfe0" strokeType="INSIDE" width="120.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c1e1ec" height="342.0" layoutX="13.0" layoutY="133.0" stroke="#c1e1ec" strokeType="INSIDE" width="372.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#72bcd4" height="100.0" stroke="#72bcd4" strokeType="INSIDE" width="517.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8f4f8" height="23.0" layoutY="94.0" stroke="#e8f4f8" strokeType="INSIDE" width="517.0" />
-      <Button fx:id="toFood" layoutX="57.0" layoutY="398.0" mnemonicParsing="false" onAction="#toFoodScene" prefHeight="23.0" prefWidth="84.0" text="Enter new food">
+      <Button fx:id="toFood" layoutX="415.0" layoutY="144.0" mnemonicParsing="false" onAction="#toFoodScene" prefHeight="23.0" prefWidth="84.0" text="Enter new food">
          <font>
             <Font size="10.0" />
          </font></Button>
-      <Button fx:id="toSummary" layoutX="273.0" layoutY="398.0" mnemonicParsing="false" onAction="#toMonthlySummary" prefHeight="17.0" prefWidth="97.0" text="Monthly Summary">
+      <Button fx:id="toSummary" layoutX="409.0" layoutY="390.0" mnemonicParsing="false" onAction="#toMonthlySummary" prefHeight="17.0" prefWidth="97.0" text="Monthly Summary">
          <font>
             <Font size="10.0" />
          </font></Button>
-      <PieChart fx:id="dailyView" layoutX="56.0" layoutY="133.0" prefHeight="230.0" prefWidth="314.0" title="Daily Nutrition" />
+      <PieChart fx:id="dailyView" layoutX="10.0" layoutY="133.0" prefHeight="342.0" prefWidth="378.0" title="Daily Nutrition" />
       <Label fx:id="userlabel" layoutX="45.0" layoutY="-5.0" prefHeight="70.0" prefWidth="228.0" text="Your Information">
          <font>
             <Font name="Javanese Text" size="25.0" />
@@ -31,7 +32,7 @@
       </Label>
       <Label fx:id="goalweightlabel" layoutX="196.0" layoutY="55.0" prefHeight="17.0" prefWidth="74.0" text="Goal Weight:" />
       <Label fx:id="userweightlabel" layoutX="131.0" layoutY="63.0" />
-      <Button fx:id="update" layoutX="170.0" layoutY="397.0" mnemonicParsing="false" onAction="#updateWeight" prefHeight="25.0" prefWidth="84.0" text="Update Weight">
+      <Button fx:id="update" layoutX="415.0" layoutY="268.0" mnemonicParsing="false" onAction="#toUpdateUser" prefHeight="25.0" prefWidth="84.0" text="Update User">
          <font>
             <Font size="10.0" />
          </font></Button>
@@ -48,10 +49,6 @@
       <Label layoutX="57.0" layoutY="55.0" text="Current Weight:" />
       <Label fx:id="currentWeight" layoutX="149.0" layoutY="55.0" text="//" />
       <Label fx:id="userHeight" layoutX="101.0" layoutY="72.0" text="//" />
-      <TextField fx:id="newWeight" alignment="CENTER" layoutX="175.0" layoutY="433.0" prefHeight="25.0" prefWidth="74.0" promptText="update weight">
-         <font>
-            <Font size="10.0" />
-         </font></TextField>
       <Label layoutX="45.0" layoutY="91.0" prefHeight="17.0" prefWidth="84.0" text="Total Calories:">
          <font>
             <Font name="Javanese Text" size="12.0" />
@@ -60,7 +57,7 @@
          <font>
             <Font name="Javanese Text" size="12.0" />
          </font></Label>
-      <Label layoutX="308.0" layoutY="91.0" prefHeight="17.0" prefWidth="74.0" text="Calories left:">
+      <Label layoutX="296.0" layoutY="91.0" prefHeight="17.0" prefWidth="74.0" text="Calories left:">
          <font>
             <Font name="Javanese Text" size="12.0" />
          </font></Label>
@@ -72,7 +69,7 @@
          <font>
             <Font name="Javanese Text" size="12.0" />
          </font></Label>
-      <Label fx:id="leftCalories" layoutX="382.0" layoutY="99.0" prefHeight="17.0" prefWidth="31.0" text="/ / / /" />
+      <Label fx:id="leftCalories" layoutX="365.0" layoutY="98.0" prefHeight="17.0" prefWidth="31.0" text="/ / / /" />
       <Line endX="100.0" layoutX="140.0" layoutY="48.0" startX="-100.0" />
       <Circle fill="#e8f4f8" layoutX="40.0" layoutY="49.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
       <Circle fill="#e8f4f8" layoutX="241.0" layoutY="48.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
