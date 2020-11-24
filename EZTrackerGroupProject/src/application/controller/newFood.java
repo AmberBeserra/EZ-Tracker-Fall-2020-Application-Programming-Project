@@ -2,10 +2,13 @@ package application.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import application.model.Meal;
+import application.model.User;
+import application.model.UserData;
 import application.model.Food;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -39,6 +42,8 @@ public class newFood
 	private TextField protein;
 	@FXML
 	private TextArea output;
+	@FXML
+	private Label currentUser;
 
 	static ArrayList<Food> meal = new ArrayList<Food>();
 
@@ -62,7 +67,40 @@ public class newFood
 
 	@FXML
 	void completeMeal(ActionEvent event) throws IOException  //returns to main user page
+, ClassNotFoundException
 	{
+		UserData data = new UserData();
+		User currentUser = data.getUser(LogInController.username);
+		if(meal.isEmpty()){
+			Alert mealsEmpty = new Alert(AlertType.NONE);
+			mealsEmpty.setAlertType(AlertType.ERROR);
+			mealsEmpty.setTitle("ERROR");
+			mealsEmpty.setHeaderText("Unable to add meal!");
+			mealsEmpty.setContentText("Please make sure to add at least one food item!");
+			mealsEmpty.show();
+		}
+		else {
+			Meal completeMeal = new Meal(LocalDate.now(), meal);
+			currentUser.addMeal(completeMeal);
+			data.updateUser(currentUser);
+			Alert mealAdded = new Alert(AlertType.NONE);
+			mealAdded.setAlertType(AlertType.CONFIRMATION);
+			mealAdded.setTitle("Success");
+			mealAdded.setHeaderText("Meal added!");
+			mealAdded.setContentText("Meal added to history for " + currentUser.getUserName() + "!");
+			mealAdded.show();
+			
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/UserPage.fxml"));
+			Parent userScene = loader.load();
+			UserController controller = loader.getController();
+			controller.loadStats(LogInController.username);
+			//userScene = FXMLLoader.load(getClass().getResource("../view/UserPage.fxml"));// pane you are GOING TO
+			Scene scene = new Scene(userScene);// pane you are GOING TO show
+			scene.getStylesheets().add(getClass().getResource("../view/application.css").toExternalForm());
+			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();// pane you are ON
+			window.setScene(scene);
+			window.show();
+		}
 
 	}
 
@@ -80,7 +118,9 @@ public class newFood
 			Food currentItem = new Food(name,Integer.parseInt(cal),Integer.parseInt(car),Integer.parseInt(f),Integer.parseInt(pro));
 			meal.add(currentItem);
 			out = ("Name: " + name +"\n");
-			out = ("Carbs: " + cal +"\n");
+			out += ("Carbs: " + cal +" ");
+			out += ("Fat: " + f + " ");
+			out += ("Protein: " + pro + "\n");
 			output.setText(out);
 		}
 	}
@@ -148,6 +188,12 @@ public class newFood
 		catch (NumberFormatException e)  
 		{ 
 			return false;
-		} 
+		}
 	}
+    @FXML
+    public void loadStats(String username) throws ClassNotFoundException, IOException{
+    	UserData data = new UserData();
+    	User user = new User();
+    	user = data.getUser(username);;
+    	currentUser.setText(user.getUserName());    }
 }

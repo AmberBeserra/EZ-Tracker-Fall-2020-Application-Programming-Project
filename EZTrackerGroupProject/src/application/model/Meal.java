@@ -1,18 +1,17 @@
 package application.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class Meal {
-	String username;
+public class Meal implements Serializable {
 	LocalDate day;
-	ArrayList<Food> meal = new ArrayList<Food>();
+	ArrayList<Food> foodItems = new ArrayList<Food>();
 	
-	public Meal(String username,LocalDate day, ArrayList<Food> meal) {
+	public Meal(LocalDate day, ArrayList<Food> meal) {
 		super();
-		this.username = username;
 		this.day = day;
-		this.meal = meal;
+		this.foodItems = meal;
 	}
 	public LocalDate getDay() {
 		return day;
@@ -20,10 +19,7 @@ public class Meal {
 	public void setDay(LocalDate day) {
 		this.day = day;
 	}
-	public ArrayList<Food> getMeal() {
-		return meal;
-	}
-	public void setMeal(ArrayList<Food> meal) {
-		this.meal = meal;
+	public ArrayList<Food> getFoodItems() {
+		return foodItems;
 	}
 }

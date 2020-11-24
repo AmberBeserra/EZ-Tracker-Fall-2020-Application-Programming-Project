@@ -19,7 +19,7 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </LineChart>
-      <Button fx:id="backButton" layoutX="14.0" layoutY="288.0" mnemonicParsing="false" onAction="#handle1" text="Back" />
+      <Button fx:id="backButton" layoutX="14.0" layoutY="288.0" mnemonicParsing="false" onAction="#toUserScene" text="Back" />
       <Label fx:id="currentUser" layoutX="305.0" layoutY="292.0" prefHeight="17.0" prefWidth="73.0" text="//" />
    </children>
 </AnchorPane>

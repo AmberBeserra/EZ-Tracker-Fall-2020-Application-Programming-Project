@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class UserData
@@ -57,6 +58,19 @@ public class UserData
        oos.close();
        fos.close();
 	}
+	 public void updateUser(User user) throws ClassNotFoundException, IOException{
+		ArrayList<User> userList =  loadExistingUsers();
+		
+
+			for(int i = 0; i < userList.size(); i++){
+				if(userList.get(i).getUserName().equals(user.getUserName()))
+				{
+					userList.set(i, user);
+				}
+				
+			}
+			updateUsers(userList);
+	}
 	public ArrayList<User> loadExistingUsers() throws IOException, ClassNotFoundException{
 		ArrayList<User> users =  new ArrayList<User>();
 		try {
@@ -91,5 +105,50 @@ public class UserData
 				return userList.get(i);	
 		} 
 		return user;
+	}
+	public ArrayList<Meal> todaysMeals(User user){
+		ArrayList <Meal> today = new ArrayList<Meal>();
+		for(int i = 0; i < user.getMealHistory().size(); i++) {
+			if (user.getMealHistory().get(i).getDay().equals(LocalDate.now())){
+				today.add(user.getMealHistory().get(i));
+			}
+		}
+		return today;
+	}
+	public int todaysCalories(ArrayList<Meal> meals){
+		int totalCalories = 0;
+		for(int i = 0; i < meals.size(); i++) {
+			for(int j = 0; j <meals.get(i).getFoodItems().size(); j++){
+				totalCalories += meals.get(i).getFoodItems().get(j).getCalories();
+			}
+		}
+		return totalCalories;
+	}
+	public int todaysCarbs(ArrayList<Meal> meals){
+		int totalCarbs = 0;
+		for(int i = 0; i < meals.size(); i++) {
+			for(int j = 0; j <meals.get(i).getFoodItems().size(); j++){
+				totalCarbs += meals.get(i).getFoodItems().get(i).getCarbs();
+			}
+		}
+		return totalCarbs;
+	}
+	public int todaysFat(ArrayList<Meal> meals){
+		int totalFat = 0;
+		for(int i = 0; i < meals.size(); i++) {
+			for(int j = 0; j <meals.get(i).getFoodItems().size(); j++){
+				totalFat += meals.get(i).getFoodItems().get(i).getFat();
+			}
+		}
+		return totalFat;
+	}
+	public int todaysProtein(ArrayList<Meal> meals){
+		int totalProtein = 0;
+		for(int i = 0; i < meals.size(); i++) {
+			for(int j = 0; j <meals.get(i).getFoodItems().size(); j++){
+				totalProtein += meals.get(i).getFoodItems().get(i).getProtein();
+			}
+		}
+		return totalProtein;
 	}
 }
