@@ -4,11 +4,13 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Meal {
+	String username;
 	LocalDate day;
 	ArrayList<Food> meal = new ArrayList<Food>();
 	
-	public Meal(LocalDate day, ArrayList<Food> meal) {
+	public Meal(String username,LocalDate day, ArrayList<Food> meal) {
 		super();
+		this.username = username;
 		this.day = day;
 		this.meal = meal;
 	}

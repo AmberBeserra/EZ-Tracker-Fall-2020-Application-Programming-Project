@@ -159,7 +159,6 @@ public class NewUserController
 			return false;
 		default:
 			return true;
-
 		}
 	}
 }
