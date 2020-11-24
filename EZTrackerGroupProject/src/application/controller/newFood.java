@@ -121,7 +121,7 @@ public class newFood
 			out += ("Carbs: " + cal +" ");
 			out += ("Fat: " + f + " ");
 			out += ("Protein: " + pro + "\n");
-			output.setText(out);
+			output.appendText(out);
 		}
 	}
 
