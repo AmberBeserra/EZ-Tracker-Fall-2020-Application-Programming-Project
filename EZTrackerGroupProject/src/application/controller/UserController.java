@@ -16,6 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -67,12 +68,19 @@ public class UserController
 	
     @FXML
     private Label totalCalories;
-   
+    @FXML
+    private Label usedCalories;
+    @FXML
+    private Label leftCalories;
 
     @FXML
-    public void toMonthlySummary(ActionEvent event) throws IOException 
+    public void toMonthlySummary(ActionEvent event) throws IOException, ClassNotFoundException 
     {
-    	monthlySummaryScene = FXMLLoader.load(getClass().getResource("../view/Monthly.fxml"));// pane you are GOING TO
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/Monthly.fxml"));
+		Parent monthlySummaryScene = loader.load();
+		WeekySummaryController controller = loader.getController();
+		controller.loadStats(LogInController.username);	
+    	//monthlySummaryScene = FXMLLoader.load(getClass().getResource("../view/Monthly.fxml"));// pane you are GOING TO
         Scene scene = new Scene(monthlySummaryScene);// pane you are GOING TO show
         scene.getStylesheets().add(getClass().getResource("../view/application.css").toExternalForm());
         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();// pane you are ON
@@ -93,9 +101,12 @@ public class UserController
     }
 
     @FXML
-    void toFoodScene(ActionEvent event) throws IOException 
+    void toFoodScene(ActionEvent event) throws IOException, ClassNotFoundException 
     {
-    	  foodScene = FXMLLoader.load(getClass().getResource("../view/newFood.fxml"));// pane you are GOING TO
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/newFood.fxml"));
+		Parent foodScene = loader.load();
+		newFood controller = loader.getController();
+		controller.loadStats(LogInController.username);	
           Scene scene = new Scene(foodScene);// pane you are GOING TO show
           scene.getStylesheets().add(getClass().getResource("../view/application.css").toExternalForm());
           Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();// pane you are ON
@@ -113,7 +124,8 @@ public class UserController
     	goalWeight.setText(Integer.toString(user.getGoalWeight())+"lbs");
     	userHeight.setText(Integer.toString(user.getHeight())+"in");
     	totalCalories.setText(Integer.toString(user.getCalorieGoal()));
-
+    	usedCalories.setText(Integer.toString(data.todaysCalories(data.todaysMeals(user))));
+    	leftCalories.setText(Integer.toString(user.getCalorieGoal()-data.todaysCalories(data.todaysMeals(user))));
     }
 
     @FXML

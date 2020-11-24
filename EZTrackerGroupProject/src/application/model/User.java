@@ -5,6 +5,7 @@ package application.model;
 
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 
 /**
@@ -26,7 +27,7 @@ public class User implements Serializable{
 	private int calorieGoal;
 	private int caloriesUsed;
 	private Boolean isEmpty;
-	
+	private ArrayList<Meal> mealHistory;
 	public User(){
 		super();
 		this.isEmpty = true;
@@ -41,9 +42,13 @@ public class User implements Serializable{
 		this.height = Integer.parseInt(height);
 		this.goalWeight = Integer.parseInt(goalWeight);
 		this.isEmpty = false;
+		this.mealHistory = new ArrayList<Meal>();
 		this.calorieGoal = calcCalories(gender,Integer.parseInt(age),Integer.parseInt(weight),Integer.parseInt(height));
 	}
 
+	public void setMealHistory(ArrayList<Meal> mealHistory) {
+		this.mealHistory = mealHistory;
+	}
 	public String getUserName() {
 		return userName;
 	}
@@ -117,6 +122,12 @@ public class User implements Serializable{
 	}
 	public Boolean getIsEmpty() {
 		return isEmpty;
+	}
+	public ArrayList<Meal> getMealHistory() {
+		return mealHistory;
+	}
+	public void addMeal(Meal meal) {
+		this.mealHistory.add(meal);
 	}
 	public int calcCalories(String gender,int age, int weight, int height){
 		int h = (int) (height*2.54);
