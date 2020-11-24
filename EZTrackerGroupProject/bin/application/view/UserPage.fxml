@@ -23,7 +23,7 @@
          <font>
             <Font size="10.0" />
          </font></Button>
-      <PieChart layoutX="56.0" layoutY="133.0" prefHeight="230.0" prefWidth="314.0" title="Daily Nutrition" />
+      <PieChart fx:id="dailyView" layoutX="56.0" layoutY="133.0" prefHeight="230.0" prefWidth="314.0" title="Daily Nutrition" />
       <Label fx:id="userlabel" layoutX="45.0" layoutY="-5.0" prefHeight="70.0" prefWidth="228.0" text="Your Information">
          <font>
             <Font name="Javanese Text" size="25.0" />

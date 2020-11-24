@@ -6,6 +6,8 @@ import java.util.ResourceBundle;
 
 import application.model.User;
 import application.model.UserData;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +20,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -72,6 +75,8 @@ public class UserController
     private Label usedCalories;
     @FXML
     private Label leftCalories;
+    @FXML
+    private PieChart dailyView;
 
     @FXML
     public void toMonthlySummary(ActionEvent event) throws IOException, ClassNotFoundException 
@@ -118,6 +123,11 @@ public class UserController
     	UserData data = new UserData();
     	User user = new User();
     	user = data.getUser(username);
+    	ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
+    			new PieChart.Data("Carbs", (data.todaysCarbs(data.todaysMeals(user))*4)),
+    			new PieChart.Data("Protein", (data.todaysProtein(data.todaysMeals(user))*4)),
+    			new PieChart.Data("Fat", (data.todaysFat(data.todaysMeals(user))*9)));
+    	
     	userlabel.setText(user.getName());
     	currentUser.setText(user.getUserName());
     	currentWeight.setText(Integer.toString(user.getWeight())+"lbs");
@@ -126,6 +136,9 @@ public class UserController
     	totalCalories.setText(Integer.toString(user.getCalorieGoal()));
     	usedCalories.setText(Integer.toString(data.todaysCalories(data.todaysMeals(user))));
     	leftCalories.setText(Integer.toString(user.getCalorieGoal()-data.todaysCalories(data.todaysMeals(user))));
+    	dailyView.setData(pieChartData);
+    	dailyView.setTitle("Today’s breakdown");
+    	
     }
 
     @FXML
