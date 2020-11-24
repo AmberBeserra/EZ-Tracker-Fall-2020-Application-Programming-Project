@@ -27,6 +27,8 @@ public class newFood
 	@FXML
 	private AnchorPane userScene;
 	@FXML
+	private TextField foodName;
+	@FXML
 	private TextField calories;
 	@FXML
 	private TextField carbs;
@@ -34,6 +36,8 @@ public class newFood
 	private TextField fat;
 	@FXML
 	private TextField protein;
+	@FXML
+	private TextField output;
 
 	static ArrayList<Food> meal = new ArrayList<Food>();
 
@@ -64,13 +68,19 @@ public class newFood
 	@FXML
 	void addToMeal(ActionEvent event) throws IOException  //returns to main user page
 	{
-		String name = "test";
+		String name = foodName.getText();
 		String cal = calories.getText();
 		String car = carbs.getText();
 		String f = fat.getText();
 		String pro = protein.getText();
+		String out = "";
+		
 		if(validateInput(name,cal,car,f,pro)){
-			System.out.println("It Works!!!");
+			Food currentItem = new Food(name,Integer.parseInt(cal),Integer.parseInt(car),Integer.parseInt(f),Integer.parseInt(pro));
+			meal.add(currentItem);
+			out = ("Name: " + name +"\n");
+			out = ("Carbs: " + cal +"\n");
+			output.setText(out);
 		}
 	}
 
