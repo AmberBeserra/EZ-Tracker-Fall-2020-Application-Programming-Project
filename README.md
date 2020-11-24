@@ -2,9 +2,24 @@
 
 # EZTracker
 
+# by The Weight Watchers
+
+	Alejandro Navarro
+	Amber Beserra
+	Andres De La Rosa
+	Lucas Overbey
+	
 ## Introduction
 
 This app helps the user to keep track of what they are eating and how it affects their diet over time. It also helps ensure the user that they are getting the recommended servings of their daily nutrients.
+
+## Known Bugs
+
+N/A
+
+## Login Credentials
+
+N/A
 
 ## Code Samples
 
