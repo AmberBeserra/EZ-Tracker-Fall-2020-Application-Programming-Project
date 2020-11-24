@@ -10,15 +10,17 @@
 
 <AnchorPane fx:id="newUserScene" prefHeight="407.0" prefWidth="381.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.NewUserController">
    <children>
-      <Button fx:id="newUser" layoutX="130.0" layoutY="306.0" mnemonicParsing="false" onAction="#createUser" prefHeight="37.0" prefWidth="121.0" stylesheets="@../view/application.css" text="Create User">
+      <Button fx:id="newUser" layoutX="137.0" layoutY="323.0" mnemonicParsing="false" onAction="#createUser" prefHeight="17.0" prefWidth="95.0" stylesheets="@../view/application.css" text="Create User">
       </Button>
-      <TextField fx:id="newUserName" layoutX="104.0" layoutY="32.0" prefHeight="25.0" prefWidth="174.0" promptText="Enter a username" />
-      <TextField fx:id="newAge" layoutX="104.0" layoutY="110.0" prefHeight="25.0" prefWidth="174.0" promptText="Enter your age" />
-      <TextField fx:id="newGender" layoutX="104.0" layoutY="150.0" prefHeight="25.0" prefWidth="174.0" promptText="Enter your gender( m or f )" />
-      <TextField fx:id="newWeight" layoutX="104.0" layoutY="191.0" prefHeight="25.0" prefWidth="174.0" promptText="Enter your current weight(lbs)" />
-      <TextField fx:id="newHeight" layoutX="104.0" layoutY="229.0" prefHeight="25.0" prefWidth="174.0" promptText="Enter your height(inches)" />
-      <TextField fx:id="goalWeight" layoutX="104.0" layoutY="269.0" prefHeight="25.0" prefWidth="174.0" promptText="Enter your goal weight(lbs)" />
-      <Button fx:id="logIn" layoutX="19.0" layoutY="359.0" mnemonicParsing="false" onAction="#toLoginScene" text="I have a profile" textFill="#4f3a3a" />
-      <TextField fx:id="newName" layoutX="104.0" layoutY="70.0" prefHeight="25.0" prefWidth="174.0" promptText="Enter your name" />
+      <TextField fx:id="newUserName" layoutX="101.0" layoutY="21.0" prefHeight="25.0" prefWidth="174.0" promptText="Enter a username" />
+      <TextField fx:id="newAge" layoutX="100.0" layoutY="94.0" prefHeight="25.0" prefWidth="174.0" promptText="Enter your age" />
+      <TextField fx:id="newGender" layoutX="100.0" layoutY="130.0" prefHeight="25.0" prefWidth="174.0" promptText="Enter your gender( m or f )" />
+      <TextField fx:id="newWeight" layoutX="101.0" layoutY="166.0" prefHeight="25.0" prefWidth="174.0" promptText="Enter your current weight(lbs)" />
+      <TextField fx:id="newHeight" layoutX="101.0" layoutY="204.0" prefHeight="25.0" prefWidth="174.0" promptText="Enter your height(inches)" />
+      <TextField fx:id="goalWeight" layoutX="100.0" layoutY="240.0" prefHeight="25.0" prefWidth="174.0" promptText="Enter your goal weight(lbs)" />
+      <Button fx:id="logIn" layoutX="14.0" layoutY="368.0" mnemonicParsing="false" onAction="#toLoginScene" text="I have a profile" textFill="#4f3a3a" />
+      <TextField fx:id="newName" layoutX="101.0" layoutY="58.0" prefHeight="25.0" prefWidth="174.0" promptText="Enter your name" />
+      <RadioButton fx:id="loseWeight" layoutX="101.0" layoutY="274.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="167.0" text="I want to lose weight " />
+      <RadioButton fx:id="gainWeight" layoutX="101.0" layoutY="298.0" mnemonicParsing="false" text="I want to gain weight" />
    </children>
 </AnchorPane>
