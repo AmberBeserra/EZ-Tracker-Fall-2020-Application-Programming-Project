@@ -1,17 +1,10 @@
 package application.controller;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import javafx.scene.control.RadioButton;
 import java.io.IOException;
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Properties;
-
 import application.model.UserData;
 import application.model.User;
 import javafx.event.ActionEvent;
@@ -22,11 +15,18 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+/**
+ * Controller for NewUser view, allows user to create new user.
+ * @author yit031
+ * @version .9
+ * @since 2020-11-24
+ */
 public class NewUserController
 {
+	//Pages
 	@FXML
 	private AnchorPane mainPane2;
-
+	//TextFields
 	@FXML
 	private TextField newUserName;
 	@FXML
@@ -41,14 +41,29 @@ public class NewUserController
 	private TextField newHeight;
 	@FXML
 	private TextField goalWeight;
-
-
+	//ToggleGroup
 	@FXML
-	public void createUser(ActionEvent event) throws IOException //goes to main user page
+	private ToggleGroup loseGain;
+	//Radio Button
+	@FXML
+	private RadioButton loseWeight;
+	@FXML
+	private RadioButton gainWeight;
+	
+	/**
+	 * Creates User with given value and stores in file.
+	 * 
+	 * @param event Create User button clicked
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
+	@FXML
+	private void createUser(ActionEvent event) throws IOException //goes to main user page
 	, ClassNotFoundException
 	{
-		String userN, name, age, gender, weight, height, gWeight; 
+		String userN, name, age, gender, weight, height, gWeight, loseOrGain; 
 
+		//Set all User values to user input
 		userN = newUserName.getText();
 		name = newName.getText();
 		age = newAge.getText();
@@ -56,18 +71,23 @@ public class NewUserController
 		weight = newWeight.getText();
 		height = newHeight.getText();
 		gWeight = goalWeight.getText();
+		loseOrGain = loseGain.getSelectedToggle().getUserData().toString();
 
+		//Make sure user input is valid
 		if(validateInput(userN, name, age, gender, weight, height, gWeight)){
 			UserData data= new UserData();
-			User user = new User(userN, name, age, gender, weight, height, gWeight);
+			User user = new User(userN, name, age, gender, weight, height, gWeight, loseOrGain);
+
+			//Adds previous values to user Storage
 			if(data.addUser(user)){
+				//Confirmation that user was created
 				Alert userCreated = new Alert(AlertType.NONE);
 				userCreated.setAlertType(AlertType.CONFIRMATION);
 				userCreated.setTitle("User Added");
 				userCreated.setHeaderText("User added successfully!");
 				userCreated.setContentText("You can now login and start tracking!");
 				userCreated.show();
-				
+				//Goes back to login page
 				mainPane2 = FXMLLoader.load(getClass().getResource("../view/LogIn.fxml"));// pane you are GOING TO
 				Scene scene = new Scene(mainPane2);// pane you are GOING TO show
 				scene.getStylesheets().add(getClass().getResource("../view/application.css").toExternalForm());
@@ -76,6 +96,7 @@ public class NewUserController
 				window.show();
 			}
 			else {
+				//Error that user already exists
 				Alert creationFailed = new Alert(AlertType.NONE);
 				creationFailed.setAlertType(AlertType.ERROR);
 				creationFailed.setTitle("ERROR");
@@ -86,8 +107,14 @@ public class NewUserController
 		}
 
 	}
+	/**
+	 * Take user back to Login page.
+	 * 
+	 * @param event I have a profile button clicked
+	 * @throws IOException
+	 */
 	@FXML
-	void toLoginScene(ActionEvent event) throws IOException 
+	private void toLoginScene(ActionEvent event) throws IOException 
 	{
 		mainPane2 = FXMLLoader.load(getClass().getResource("../view/LogIn.fxml"));// pane you are GOING TO
 		Scene scene = new Scene(mainPane2);// pane you are GOING TO show
@@ -96,10 +123,21 @@ public class NewUserController
 		window.setScene(scene);
 		window.show();
 	}
-
-	boolean validateInput(String user, String name, String age, String gen, String weight, String height, String gWeight){
-		int issueCode = 0;
-		//check if empty input
+	/**
+	 * Checks to see if values are valid.
+	 * 
+	 * @param user The username for new user.
+	 * @param name The Full name of user.
+	 * @param age The age of user.
+	 * @param gen The gender of user.
+	 * @param weight The weight of user.
+	 * @param height The height of user.
+	 * @param gWeight
+	 * @return Returns true if valid false if not.
+	 */
+	private boolean validateInput(String user, String name, String age, String gen, String weight, String height, String gWeight){
+		int issueCode = 0;		//Reason input is not valid
+		//Check if empty input
 		if(user.isEmpty()||name.isEmpty()||age.isEmpty()||gen.isEmpty()||weight.isEmpty()||height.isEmpty()||gWeight.isEmpty()){
 			issueCode = 1;
 		}
@@ -125,7 +163,7 @@ public class NewUserController
 			}
 		}
 		switch(issueCode) {
-		case 1:
+		case 1:		//Empty field
 			Alert emptyField = new Alert(AlertType.NONE);
 			emptyField.setAlertType(AlertType.ERROR);
 			emptyField.setTitle("ERROR");
@@ -133,7 +171,7 @@ public class NewUserController
 			emptyField.setContentText("Please make sure every field has a value to create a new user");
 			emptyField.show();
 			return false;
-		case 2:
+		case 2:		//Value below zero
 			Alert valueError = new Alert(AlertType.NONE);
 			valueError.setAlertType(AlertType.ERROR);
 			valueError.setTitle("ERROR");
@@ -141,7 +179,7 @@ public class NewUserController
 			valueError.setContentText("Please make sure every field with a number has a value above zero!");
 			valueError.show();
 			return false;
-		case 3:
+		case 3:		//Missing int
 			Alert notInt = new Alert(AlertType.NONE);
 			notInt.setAlertType(AlertType.ERROR);
 			notInt.setTitle("ERROR");
@@ -149,7 +187,7 @@ public class NewUserController
 			notInt.setContentText("Please make sure every field requiring an integer has one!");
 			notInt.show();
 			return false;
-		case 4:
+		case 4:		//Wrong gender
 			Alert genderMF = new Alert(AlertType.NONE);
 			genderMF.setAlertType(AlertType.ERROR);
 			genderMF.setTitle("ERROR");
@@ -160,6 +198,19 @@ public class NewUserController
 		default:
 			return true;
 		}
+	}
+	/**
+	 * Loads scene with data.
+	 * 
+	 */
+	@FXML
+	private void initialize(){
+		gainWeight.setToggleGroup(loseGain);
+		loseWeight.setToggleGroup(loseGain);
+		gainWeight.setUserData("G");
+		loseWeight.setUserData("L");
+		loseWeight.setSelected(true);
+
 	}
 }
 

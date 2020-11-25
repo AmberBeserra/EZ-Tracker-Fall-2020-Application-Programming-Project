@@ -26,13 +26,14 @@ public class User implements Serializable{
 	private int goalWeight;
 	private int calorieGoal;
 	private int caloriesUsed;
+	private String loseOrGain;
 	private Boolean isEmpty;
 	private ArrayList<Meal> mealHistory;
 	public User(){
 		super();
 		this.isEmpty = true;
 	}
-	public User(String userName, String name, String age, String gender, String weight, String height, String goalWeight) {
+	public User(String userName, String name, String age, String gender, String weight, String height, String goalWeight, String lOrG) {
 		super();
 		this.userName = userName;
 		this.name = name;
@@ -41,9 +42,12 @@ public class User implements Serializable{
 		this.weight = Integer.parseInt(weight);
 		this.height = Integer.parseInt(height);
 		this.goalWeight = Integer.parseInt(goalWeight);
+		this.calorieGoal = calcCalories(gender,Integer.parseInt(age),Integer.parseInt(weight),Integer.parseInt(height));
+		this.loseOrGain = lOrG;
 		this.isEmpty = false;
 		this.mealHistory = new ArrayList<Meal>();
-		this.calorieGoal = calcCalories(gender,Integer.parseInt(age),Integer.parseInt(weight),Integer.parseInt(height));
+
+		
 	}
 
 	public void setMealHistory(ArrayList<Meal> mealHistory) {

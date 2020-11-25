@@ -26,7 +26,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class newFood
+public class NewFoodController
 {
 	@FXML
 	private AnchorPane userScene;

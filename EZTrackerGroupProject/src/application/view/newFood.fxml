@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="foodScene" prefHeight="459.0" prefWidth="445.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.newFood">
+<AnchorPane fx:id="foodScene" prefHeight="459.0" prefWidth="445.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.NewFoodController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#99cfe0" height="458.0" layoutX="272.0" layoutY="1.0" stroke="#99cfe0" strokeType="INSIDE" width="224.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#72bcd4" height="59.0" stroke="#72bcd4" strokeType="INSIDE" width="496.0" />

@@ -113,7 +113,7 @@ public class UserController
     {
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/newFood.fxml"));
 		Parent foodScene = loader.load();
-		newFood controller = loader.getController();
+		NewFoodController controller = loader.getController();
 		controller.loadStats(LogInController.username);	
           Scene scene = new Scene(foodScene);// pane you are GOING TO show
           scene.getStylesheets().add(getClass().getResource("../view/application.css").toExternalForm());
