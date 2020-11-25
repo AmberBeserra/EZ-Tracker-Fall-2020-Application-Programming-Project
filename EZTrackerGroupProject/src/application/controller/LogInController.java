@@ -20,6 +20,10 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.fxml.FXMLLoader;
 
+/**
+ * @author yit031
+ *
+ */
 public class LogInController
 {	@FXML
 	private AnchorPane userScene;
@@ -30,11 +34,19 @@ private TextField userName;
 
 static String username;
 
+/**
+ * Takes user to user page providing a correct login is put in.
+ * 
+ * @param event Login button is clicked.
+ * @throws IOException
+ * @throws ClassNotFoundException
+ */
 @FXML
 public void toUserScene(ActionEvent event) throws IOException //goes to main user page(we need to put in method later for login check)
 , ClassNotFoundException
 {
 	UserData data = new UserData();
+	//Checks if username TextField is empty
 	if(userName.getText().isEmpty()||userName.getText()== null){
 		Alert userNotFound = new Alert(AlertType.NONE);
 		userNotFound.setAlertType(AlertType.ERROR);
@@ -44,17 +56,17 @@ public void toUserScene(ActionEvent event) throws IOException //goes to main use
 		userNotFound.show();    		
 	}
 	else{
-		username = userName.getText();
-
+		username = userName.getText();		//Sets username to TextField for package
+		
+		//Checks if user exists
 		if(data.userExists(username)){
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/UserPage.fxml"));
 			Parent userScene = loader.load();
 			UserController controller = loader.getController();
-			controller.loadStats(username);
-			//userScene = FXMLLoader.load(getClass().getResource("../view/UserPage.fxml"));// pane you are GOING TO
-			Scene scene = new Scene(userScene);// pane you are GOING TO show
+			controller.loadStats(username);		//Populates information for next view										
+			Scene scene = new Scene(userScene);		// pane you are GOING TO show
 			scene.getStylesheets().add(getClass().getResource("../view/application.css").toExternalForm());
-			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();// pane you are ON
+			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();		// pane you are ON
 			window.setScene(scene);
 			window.show();
 		}
@@ -69,6 +81,12 @@ public void toUserScene(ActionEvent event) throws IOException //goes to main use
 	}
 }
 
+/**
+ * Takes user to create new user page.
+ * 
+ * @param event New user button is clicked.
+ * @throws IOException
+ */
 @FXML
 public void toNewUserScene(ActionEvent event) throws IOException 
 {
