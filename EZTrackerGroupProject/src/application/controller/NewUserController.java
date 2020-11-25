@@ -61,7 +61,8 @@ public class NewUserController
 	private void createUser(ActionEvent event) throws IOException //goes to main user page
 	, ClassNotFoundException
 	{
-		String userN, name, age, gender, weight, height, gWeight, loseOrGain; 
+		String userN, name, age, gender, weight, height, gWeight;
+		int lOrG;
 
 		//Set all User values to user input
 		userN = newUserName.getText();
@@ -71,12 +72,12 @@ public class NewUserController
 		weight = newWeight.getText();
 		height = newHeight.getText();
 		gWeight = goalWeight.getText();
-		loseOrGain = loseGain.getSelectedToggle().getUserData().toString();
+		lOrG = Integer.parseInt(loseGain.getSelectedToggle().getUserData().toString());
 
 		//Make sure user input is valid
 		if(validateInput(userN, name, age, gender, weight, height, gWeight)){
 			UserData data= new UserData();
-			User user = new User(userN, name, age, gender, weight, height, gWeight, loseOrGain);
+			User user = new User(userN, name, age, gender, weight, height, gWeight, lOrG);
 
 			//Adds previous values to user Storage
 			if(data.addUser(user)){
@@ -207,8 +208,8 @@ public class NewUserController
 	private void initialize(){
 		gainWeight.setToggleGroup(loseGain);
 		loseWeight.setToggleGroup(loseGain);
-		gainWeight.setUserData("G");
-		loseWeight.setUserData("L");
+		gainWeight.setUserData("2");
+		loseWeight.setUserData("1");
 		loseWeight.setSelected(true);
 
 	}
