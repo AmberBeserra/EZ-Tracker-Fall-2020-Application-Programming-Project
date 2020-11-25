@@ -49,7 +49,7 @@ public class NewUserController
 	private RadioButton loseWeight;
 	@FXML
 	private RadioButton gainWeight;
-	
+
 	/**
 	 * Creates User with given value and stores in file.
 	 * 
@@ -108,6 +108,7 @@ public class NewUserController
 		}
 
 	}
+
 	/**
 	 * Take user back to Login page.
 	 * 
@@ -124,6 +125,7 @@ public class NewUserController
 		window.setScene(scene);
 		window.show();
 	}
+
 	/**
 	 * Checks to see if values are valid.
 	 * 
@@ -200,6 +202,7 @@ public class NewUserController
 			return true;
 		}
 	}
+
 	/**
 	 * Loads scene with data.
 	 * 

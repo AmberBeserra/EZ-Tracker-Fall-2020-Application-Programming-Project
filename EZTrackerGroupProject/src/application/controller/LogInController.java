@@ -9,7 +9,6 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
 
@@ -31,6 +30,7 @@ public class LogInController
 	private TextField userName;
 	//User name put into TextField
 	static String username;
+
 	/**
 	 * Takes user to user page providing a correct login is put in.
 	 * 
@@ -39,8 +39,7 @@ public class LogInController
 	 * @throws ClassNotFoundException
 	 */
 	@FXML
-	public void toUserScene(ActionEvent event) throws IOException //goes to main user page(we need to put in method later for login check)
-	, ClassNotFoundException
+	public void toUserScene(ActionEvent event) throws IOException , ClassNotFoundException
 	{
 		UserData data = new UserData();
 		//Checks if user name TextField is empty
@@ -57,13 +56,10 @@ public class LogInController
 
 			//Checks if user exists
 			if(data.userExists(username)){
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/UserPage.fxml"));
-				Parent userScene = loader.load();
-				UserController controller = loader.getController();
-				controller.loadStats(username);		//Populates information for next view										
-				Scene scene = new Scene(userScene);		// pane you are GOING TO show
+				userScene= FXMLLoader.load(getClass().getResource("../view/UserPage.fxml"));// pane you are GOING TO
+				Scene scene = new Scene(userScene);// pane you are GOING TO show
 				scene.getStylesheets().add(getClass().getResource("../view/application.css").toExternalForm());
-				Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();		// pane you are ON
+				Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();// pane you are ON
 				window.setScene(scene);
 				window.show();
 			}
@@ -77,6 +73,7 @@ public class LogInController
 			}
 		}
 	}
+
 	/**
 	 * Takes user to create new user page.
 	 * 

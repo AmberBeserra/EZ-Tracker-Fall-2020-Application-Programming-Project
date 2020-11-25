@@ -22,8 +22,8 @@
          <font>
             <Font size="10.0" />
          </font></Button>
-      <TextField fx:id="newWeight" alignment="CENTER" layoutX="90.0" layoutY="167.0" prefHeight="25.0" prefWidth="149.0" promptText="update weight" />
-      <TextField fx:id="newAge" alignment="CENTER" layoutX="91.0" layoutY="109.0" prefHeight="25.0" prefWidth="149.0" promptText="update age" />
+      <TextField fx:id="newWeight" alignment="CENTER" layoutX="90.0" layoutY="167.0" prefHeight="25.0" prefWidth="149.0" promptText="leave blank to not change" />
+      <TextField fx:id="newAge" alignment="CENTER" layoutX="91.0" layoutY="109.0" prefHeight="25.0" prefWidth="149.0" promptText="leave blank to not change" />
       <Label layoutX="36.0" layoutY="103.0" text="Age:">
          <font>
             <Font name="Javanese Text" size="13.0" />
@@ -34,8 +34,11 @@
             <Font name="Javanese Text" size="13.0" />
          </font>
       </Label>
-      <RadioButton fx:id="loseWeight" layoutX="98.0" layoutY="215.0" mnemonicParsing="false" text="I want to gain weight" />
-      <RadioButton fx:id="gainWeight" layoutX="98.0" layoutY="242.0" mnemonicParsing="false" text="I want to lose weight" />
+      <RadioButton fx:id="loseWeight" layoutX="98.0" layoutY="215.0" mnemonicParsing="false" text="I want to gain weight">
+         <toggleGroup>
+            <ToggleGroup fx:id="loseGain" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="gainWeight" layoutX="98.0" layoutY="242.0" mnemonicParsing="false" text="I want to lose weight" toggleGroup="$loseGain" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8f4f8" height="8.0" layoutY="57.0" stroke="#e8f4f8" strokeType="INSIDE" width="313.0" />
       <Line endX="100.0" layoutX="151.0" layoutY="80.0" startX="-100.0" />
       <Button fx:id="update" layoutX="140.0" layoutY="281.0" mnemonicParsing="false" onAction="#updateUser" prefHeight="17.0" prefWidth="52.0" stylesheets="@../view/application.css" text="Update">

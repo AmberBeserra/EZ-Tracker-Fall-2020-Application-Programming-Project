@@ -71,6 +71,7 @@ public class UserData
 			}
 			updateUsers(userList);
 	}
+	@SuppressWarnings("unchecked")
 	public ArrayList<User> loadExistingUsers() throws IOException, ClassNotFoundException{
 		ArrayList<User> users =  new ArrayList<User>();
 		try {
