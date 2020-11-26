@@ -11,10 +11,11 @@
 
 <AnchorPane fx:id="monthlySummaryScene" prefHeight="370.0" prefWidth="406.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MonthlySummaryController">
    <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c1e1ec" height="283.0" layoutX="18.0" layoutY="57.0" stroke="#c1e1ec" strokeType="INSIDE" width="376.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#72bcd4" height="47.0" stroke="#72bcd4" strokeType="INSIDE" width="406.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8f4f8" height="6.0" layoutY="44.0" stroke="#e8f4f8" strokeType="INSIDE" width="406.0" />
       <Button fx:id="backButton" layoutX="14.0" layoutY="11.0" mnemonicParsing="false" onAction="#toUserScene" prefHeight="17.0" prefWidth="42.0" text="Back" />
       <Label fx:id="currentUser" layoutX="338.0" layoutY="340.0" prefHeight="17.0" prefWidth="56.0" text="//" />
-      <PieChart fx:id="monthlyView" layoutX="14.0" layoutY="50.0" prefHeight="283.0" prefWidth="376.0" title="Monthly Summary" />
+      <PieChart fx:id="monthlyView" layoutX="14.0" layoutY="58.0" prefHeight="283.0" prefWidth="376.0" title="Monthly Summary" />
    </children>
 </AnchorPane>
