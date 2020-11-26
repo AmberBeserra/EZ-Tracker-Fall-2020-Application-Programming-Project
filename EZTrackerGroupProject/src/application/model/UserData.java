@@ -107,6 +107,15 @@ public class UserData
 		} 
 		return user;
 	}
+	public ArrayList<Meal> monthlyMeals(User user){
+		ArrayList <Meal> monthly = new ArrayList<Meal>();
+		for(int i = 0; i < user.getMealHistory().size(); i++) {
+			if (user.getMealHistory().get(i).getDay().getMonth().equals(LocalDate.now().getMonth())){
+				monthly.add(user.getMealHistory().get(i));
+			}
+		}
+		return monthly;
+	}
 	public ArrayList<Meal> todaysMeals(User user){
 		ArrayList <Meal> today = new ArrayList<Meal>();
 		for(int i = 0; i < user.getMealHistory().size(); i++) {
@@ -125,7 +134,7 @@ public class UserData
 		}
 		return totalCalories;
 	}
-	public int todaysCarbs(ArrayList<Meal> meals){
+	public int totalCarbs(ArrayList<Meal> meals){
 		int totalCarbs = 0;
 		for(int i = 0; i < meals.size(); i++) {
 			for(int j = 0; j <meals.get(i).getFoodItems().size(); j++){
@@ -134,7 +143,7 @@ public class UserData
 		}
 		return totalCarbs;
 	}
-	public int todaysFat(ArrayList<Meal> meals){
+	public int totalFat(ArrayList<Meal> meals){
 		int totalFat = 0;
 		for(int i = 0; i < meals.size(); i++) {
 			for(int j = 0; j <meals.get(i).getFoodItems().size(); j++){
@@ -143,7 +152,7 @@ public class UserData
 		}
 		return totalFat;
 	}
-	public int todaysProtein(ArrayList<Meal> meals){
+	public int totalProtein(ArrayList<Meal> meals){
 		int totalProtein = 0;
 		for(int i = 0; i < meals.size(); i++) {
 			for(int j = 0; j <meals.get(i).getFoodItems().size(); j++){

@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Meal implements Serializable {
+	private static final long serialVersionUID = 1L;
 	LocalDate day;
 	ArrayList<Food> foodItems = new ArrayList<Food>();
 	

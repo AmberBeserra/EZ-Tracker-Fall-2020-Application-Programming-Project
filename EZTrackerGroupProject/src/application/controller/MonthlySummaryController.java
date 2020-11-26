@@ -1,21 +1,20 @@
 package application.controller;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
+
 
 import application.model.User;
 import application.model.UserData;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
@@ -32,6 +31,9 @@ public class MonthlySummaryController
 	//Label
 	@FXML
 	private Label currentUser;
+	//PieChart
+	@FXML
+	private PieChart monthlyView;
 
 	/**
 	 * Takes user to user page.
@@ -62,6 +64,13 @@ public class MonthlySummaryController
 		UserData data = new UserData();
 		User user = new User();
 		user = data.getUser(LogInController.username);;
+		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
+				new PieChart.Data("Carbs", (data.totalCarbs(data.monthlyMeals(user))*4)),
+				new PieChart.Data("Protein", (data.totalProtein(data.monthlyMeals(user))*4)),
+				new PieChart.Data("Fat", (data.totalFat(data.monthlyMeals(user))*9)));
+		
 		currentUser.setText(user.getUserName());
-	}
+		monthlyView.setData(pieChartData);
+		monthlyView.setTitle("Monthly Summary");
+	}		
 }

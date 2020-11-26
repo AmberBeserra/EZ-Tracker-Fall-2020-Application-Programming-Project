@@ -141,14 +141,13 @@ public class UserController
 	 */
 	@FXML
 	private void initialize() throws ClassNotFoundException, IOException{
-		System.out.print("works");
 		UserData data = new UserData();
 		User user = new User();
 		user = data.getUser(LogInController.username);
 		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
-				new PieChart.Data("Carbs", (data.todaysCarbs(data.todaysMeals(user))*4)),
-				new PieChart.Data("Protein", (data.todaysProtein(data.todaysMeals(user))*4)),
-				new PieChart.Data("Fat", (data.todaysFat(data.todaysMeals(user))*9)));
+				new PieChart.Data("Carbs", (data.totalCarbs(data.todaysMeals(user))*4)),
+				new PieChart.Data("Protein", (data.totalProtein(data.todaysMeals(user))*4)),
+				new PieChart.Data("Fat", (data.totalFat(data.todaysMeals(user))*9)));
 
 		userlabel.setText(user.getName());
 		currentUser.setText(user.getUserName());
@@ -159,6 +158,6 @@ public class UserController
 		usedCalories.setText(Integer.toString(data.todaysCalories(data.todaysMeals(user))));
 		leftCalories.setText(Integer.toString(user.getCalorieGoal()-data.todaysCalories(data.todaysMeals(user))));
 		dailyView.setData(pieChartData);
-		dailyView.setTitle("Today’s breakdown");
+		dailyView.setTitle("Daily Summary");
 	}
 }
