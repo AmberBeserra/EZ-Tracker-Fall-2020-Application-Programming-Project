@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import application.model.User;
 import application.model.UserData;
+import application.model.NutritionInfo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,9 +19,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
+ * This class controls the user view. Display stats pertaining to user that is currently logged in.
+ * 
  * @author yit031
- * @version .9
- * @since 2020-11-25
+ * @version 2.0
+ * @since 2020-11-27
  *
  */
 public class UserController
@@ -145,18 +148,19 @@ public class UserController
 		User user = new User();
 		user = data.getUser(LogInController.username);
 		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
-				new PieChart.Data("Carbs", (data.totalCarbs(data.todaysMeals(user))*4)),
-				new PieChart.Data("Protein", (data.totalProtein(data.todaysMeals(user))*4)),
-				new PieChart.Data("Fat", (data.totalFat(data.todaysMeals(user))*9)));
+				new PieChart.Data("Carbs", (NutritionInfo.totalCarbs(NutritionInfo.todaysMeals(user))*4)),
+				new PieChart.Data("Protein", (NutritionInfo.totalProtein(NutritionInfo.todaysMeals(user))*4)),
+				new PieChart.Data("Fat", (NutritionInfo.totalFat(NutritionInfo.todaysMeals(user))*9)));
 
+		NutritionInfo.printMeals(NutritionInfo.todaysMeals(user));
 		userlabel.setText(user.getName());
 		currentUser.setText(user.getUserName());
 		currentWeight.setText(Integer.toString(user.getWeight())+"lbs");
 		goalWeight.setText(Integer.toString(user.getGoalWeight())+"lbs");
 		userHeight.setText(Integer.toString(user.getHeight())+"in");
 		totalCalories.setText(Integer.toString(user.getCalorieGoal()));
-		usedCalories.setText(Integer.toString(data.todaysCalories(data.todaysMeals(user))));
-		leftCalories.setText(Integer.toString(user.getCalorieGoal()-data.todaysCalories(data.todaysMeals(user))));
+		usedCalories.setText(Integer.toString(NutritionInfo.totalCalories(NutritionInfo.todaysMeals(user))));
+		leftCalories.setText(Integer.toString(user.getCalorieGoal()-NutritionInfo.totalCalories(NutritionInfo.todaysMeals(user))));
 		dailyView.setData(pieChartData);
 		dailyView.setTitle("Daily Summary");
 	}

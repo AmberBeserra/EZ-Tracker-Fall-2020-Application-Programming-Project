@@ -13,9 +13,11 @@ import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
 
 /**
+ * This class controls the login view. Validates input before passing to model classes.
+ * 
  * @author yit031
- * @version .9
- * @since 2020-11-25
+ * @version 1.0
+ * @since 2020-11-27
  *
  */
 public class LogInController

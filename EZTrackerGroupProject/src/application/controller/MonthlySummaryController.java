@@ -1,6 +1,8 @@
 package application.controller;
 
 import java.io.IOException;
+
+import application.model.NutritionInfo;
 import application.model.User;
 import application.model.UserData;
 import javafx.collections.FXCollections;
@@ -16,9 +18,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
+ * This class controls Monthly view.
+ * 
  * @author yit031
- * @version .9
- * @since 2020-11-25
+ * @version 1.0
+ * @since 2020-11-27
  *
  */
 public class MonthlySummaryController
@@ -31,7 +35,7 @@ public class MonthlySummaryController
 	@FXML
 	private Label avgCal;
 	@FXML
-	private Label avgProtien;
+	private Label avgProtein;
 	//Pages
 	@FXML
 	private AnchorPane userScene;
@@ -71,13 +75,32 @@ public class MonthlySummaryController
 		UserData data = new UserData();
 		User user = new User();
 		user = data.getUser(LogInController.username);;
-		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
-				new PieChart.Data("Carbs", (data.totalCarbs(data.monthlyMeals(user))*4)),
-				new PieChart.Data("Protein", (data.totalProtein(data.monthlyMeals(user))*4)),
-				new PieChart.Data("Fat", (data.totalFat(data.monthlyMeals(user))*9)));
 		
+		//loads pie chart with data
+		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
+				new PieChart.Data("Carbs", (NutritionInfo.totalCarbs(NutritionInfo.monthlyMeals(user))*4)),
+				new PieChart.Data("Protein", (NutritionInfo.totalProtein(NutritionInfo.monthlyMeals(user))*4)),
+				new PieChart.Data("Fat", (NutritionInfo.totalFat(NutritionInfo.monthlyMeals(user))*9)));
+		
+		//Statement below can be used to debug daily meals
+		//NutritionInfo.printMeals(NutritionInfo.monthlyMeals(user));
+		
+		//sets labels to described information
 		currentUser.setText(user.getUserName());
 		monthlyView.setData(pieChartData);
 		monthlyView.setTitle("Monthly Summary");
+		//If no meals have been added catches / by zero exceptions and sets text to 0
+		try{
+		avgCal.setText(Integer.toString(NutritionInfo.totalCalories(NutritionInfo.monthlyMeals(user))/NutritionInfo.monthlyMeals(user).size()));
+		avgCarbs.setText(Integer.toString(NutritionInfo.totalCarbs(NutritionInfo.monthlyMeals(user))/NutritionInfo.monthlyMeals(user).size()));
+		avgFat.setText(Integer.toString(NutritionInfo.totalFat(NutritionInfo.monthlyMeals(user))/NutritionInfo.monthlyMeals(user).size()));
+		avgProtein.setText(Integer.toString(NutritionInfo.totalProtein(NutritionInfo.monthlyMeals(user))/NutritionInfo.monthlyMeals(user).size()));
+		}
+		catch (ArithmeticException e) {
+			avgCal.setText("0");
+			avgCarbs.setText("0");
+			avgFat.setText("0");
+			avgProtein.setText("0");
+     }
 	}		
 }

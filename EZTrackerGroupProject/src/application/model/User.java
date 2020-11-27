@@ -7,9 +7,11 @@ import java.util.ArrayList;
 
 
 /**
+ * This class represents a user and contains all personal information including meal history.
+ * 
  * @author yit031
- * @version .9
- * @since 2020-11-25
+ * @version 1.0
+ * @since 2020-11-27
  */
 public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -26,10 +28,25 @@ public class User implements Serializable{
 	private Boolean isEmpty;
 	private ArrayList<Meal> mealHistory;
 
+	/**
+	 * Constructor which makes a user and sets isEmpty to true.
+	 */
 	public User(){
 		super();
 		this.isEmpty = true;
 	}
+	/**
+	 * This is the standard constructor for a user containing all personal information.
+	 * 
+	 * @param userName	username user wishes to user
+	 * @param name	name of user
+	 * @param age age of user
+	 * @param gender gender of user
+	 * @param weight weight of user in lbs
+	 * @param height heigh of user in inches
+	 * @param goalWeight goal weight of user in lbs
+	 * @param lOrG whether user would like to gain or lose weight
+	 */
 	public User(String userName, String name, String age, String gender, String weight, String height, String goalWeight, int lOrG) {
 		super();
 		this.userName = userName;

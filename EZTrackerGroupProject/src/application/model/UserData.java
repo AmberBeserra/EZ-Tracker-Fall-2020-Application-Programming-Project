@@ -8,21 +8,46 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
+/**
+ * This class allows existing users stored in userList.ser to be loaded into program and manipulated.
+ * 
+ * @author yit032
+ * @version 1.0
+ * @since 2020-11-27
+ */
 public class UserData
 {
+	/**
+	 * Checks if username passed already exists.
+	 * 
+	 * @param username username of user to be searched
+	 * @return returns true if user exists and false if they do not
+	 * 
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public boolean userExists(String username) throws ClassNotFoundException, IOException{
-		ArrayList<User> userList =  loadExistingUsers();
+		ArrayList<User> userList =  loadExistingUsers();	//load existing users from userList.ser
+		
+		//iterates through all users
 		for(int i = 0; i < userList.size(); i++){
+			//checks if username is already stored and a user
 			if(userList.get(i).getUserName().equals(username)) 
 				return true;
 		}
 		return false;
 	}
+	/**
+	 * Prints existing users for debugging purposes.
+	 * 
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public void printExisting() throws ClassNotFoundException, IOException{
-		ArrayList<User> userList =  loadExistingUsers();
+		ArrayList<User> userList =  loadExistingUsers();	//load existing users from userList.ser
+		//iterates through all users, prints info
 		for(int i = 0; i < userList.size(); i++) {
 			System.out.println(userList.get(i).getUserName());
 			System.out.println(userList.get(i).getName());
@@ -33,24 +58,45 @@ public class UserData
 			
 		}
 	}
-	 public boolean addUser(User newUser) throws ClassNotFoundException, IOException{
-		ArrayList<User> userList =  loadExistingUsers();
+	
+	 /**
+	  * Adds new users to userList.ser as long as the username does not already exist.
+	  * 
+	 * @param newUser user object storing all user information
+	 * @return returns true if user is created false if unable to create
+	 * 
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
+	public boolean addUser(User newUser) throws ClassNotFoundException, IOException{
+		ArrayList<User> userList =  loadExistingUsers();	//load existing users from userList.ser
 		
+		//checks if userList is empty
 		if(userList.isEmpty()){
-			userList.add(newUser);
-			updateUsers(userList);
+			userList.add(newUser);	//adds user to userList array
+			updateUsers(userList);	//adds userList to userList.ser
 			return true;
 		}
 		else {
+			//iterates through  userList
 			for(int i = 0; i < userList.size(); i++){
+				//checks if username is already stored and a user, if exists does not add
 				if(userList.get(i).getUserName().equals(newUser.getUserName())) 
 					return false;	
 			}
-			userList.add(newUser);
-			updateUsers(userList);
+			userList.add(newUser);	//adds user to userList array
+			updateUsers(userList);	//adds userList to userList.ser
 			return true;
 		}
 	}
+	
+	/**
+	 * Updates userList.ser to contain most up to date list of users
+	 * 
+	 * @param users userlist to update userList.ser with
+	 * 
+	 * @throws IOException
+	 */
 	public void updateUsers(ArrayList<User> users) throws IOException{
        FileOutputStream fos= new FileOutputStream("userList.ser");
        ObjectOutputStream oos= new ObjectOutputStream(fos);
@@ -58,22 +104,41 @@ public class UserData
        oos.close();
        fos.close();
 	}
-	 public void updateUser(User user) throws ClassNotFoundException, IOException{
-		ArrayList<User> userList =  loadExistingUsers();
+	 /**
+	  * Updates specific user information
+	  * 
+	 * @param user	user to be updated
+	 * 
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
+	public void updateUser(User user) throws ClassNotFoundException, IOException{
+		ArrayList<User> userList =  loadExistingUsers();	//load existing users from userList.ser
 		
-
+			//iterates through arraylist
 			for(int i = 0; i < userList.size(); i++){
+				//checks if usernames match
 				if(userList.get(i).getUserName().equals(user.getUserName()))
 				{
-					userList.set(i, user);
+					userList.set(i, user);	//updates userList with users new info
 				}
 				
 			}
-			updateUsers(userList);
+			updateUsers(userList);	//updates userList.ser with new list of users
 	}
+	/**
+	 * Loads all existing users from userList.ser into an arraylist of users
+	 * 
+	 * @return	existing users
+	 * 
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	@SuppressWarnings("unchecked")
 	public ArrayList<User> loadExistingUsers() throws IOException, ClassNotFoundException{
 		ArrayList<User> users =  new ArrayList<User>();
+		
+		//attemps to read from serialized file and store in arraylist of user
 		try {
 			File userList = new File("userList.ser");
 			userList.createNewFile();
@@ -98,67 +163,24 @@ public class UserData
 			throw e;
 		}
 	}
+	/**
+	 * Gets specific user from userList.ser.
+	 * 
+	 * @param username username of user
+	 * @return returns user with information, or empty user if not found
+	 * 
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	public User getUser(String username) throws ClassNotFoundException, IOException{
-		ArrayList<User> userList =  loadExistingUsers();
+		ArrayList<User> userList =  loadExistingUsers();	//load existing users from userList.ser
 		User user = new User();
+		//iterates through arraylist of users
 		for(int i = 0; i < userList.size(); i++){
+			//checks if usernames match
 			if(userList.get(i).getUserName().equals(username)) 
 				return userList.get(i);	
 		} 
 		return user;
-	}
-	public ArrayList<Meal> monthlyMeals(User user){
-		ArrayList <Meal> monthly = new ArrayList<Meal>();
-		for(int i = 0; i < user.getMealHistory().size(); i++) {
-			if (user.getMealHistory().get(i).getDay().getMonth().equals(LocalDate.now().getMonth())){
-				monthly.add(user.getMealHistory().get(i));
-			}
-		}
-		return monthly;
-	}
-	public ArrayList<Meal> todaysMeals(User user){
-		ArrayList <Meal> today = new ArrayList<Meal>();
-		for(int i = 0; i < user.getMealHistory().size(); i++) {
-			if (user.getMealHistory().get(i).getDay().equals(LocalDate.now())){
-				today.add(user.getMealHistory().get(i));
-			}
-		}
-		return today;
-	}
-	public int todaysCalories(ArrayList<Meal> meals){
-		int totalCalories = 0;
-		for(int i = 0; i < meals.size(); i++) {
-			for(int j = 0; j <meals.get(i).getFoodItems().size(); j++){
-				totalCalories += meals.get(i).getFoodItems().get(j).getCalories();
-			}
-		}
-		return totalCalories;
-	}
-	public int totalCarbs(ArrayList<Meal> meals){
-		int totalCarbs = 0;
-		for(int i = 0; i < meals.size(); i++) {
-			for(int j = 0; j <meals.get(i).getFoodItems().size(); j++){
-				totalCarbs += meals.get(i).getFoodItems().get(i).getCarbs();
-			}
-		}
-		return totalCarbs;
-	}
-	public int totalFat(ArrayList<Meal> meals){
-		int totalFat = 0;
-		for(int i = 0; i < meals.size(); i++) {
-			for(int j = 0; j <meals.get(i).getFoodItems().size(); j++){
-				totalFat += meals.get(i).getFoodItems().get(i).getFat();
-			}
-		}
-		return totalFat;
-	}
-	public int totalProtein(ArrayList<Meal> meals){
-		int totalProtein = 0;
-		for(int i = 0; i < meals.size(); i++) {
-			for(int j = 0; j <meals.get(i).getFoodItems().size(); j++){
-				totalProtein += meals.get(i).getFoodItems().get(i).getProtein();
-			}
-		}
-		return totalProtein;
 	}
 }

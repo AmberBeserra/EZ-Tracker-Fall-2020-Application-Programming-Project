@@ -19,9 +19,11 @@ import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
 
 /**
+ * This class controls UpdateUser view.
+ * 
  * @author yit031
- * @version .09
- * @since 2020-11-25
+ * @version 1.0
+ * @since 2020-11-27
  *
  */
 public class UpdateUserController
@@ -37,6 +39,8 @@ public class UpdateUserController
 	//User input(TextField)
 	@FXML
 	private TextField newWeight;
+	@FXML
+	private TextField newGoalWeight;
 	@FXML
 	private TextField newAge;
 	//ToggleGroup
@@ -82,6 +86,7 @@ public class UpdateUserController
 		//Shows whether something has been changed
 		boolean wChanged = true;
 		boolean aChanged = true;
+		boolean gChanged = true;
 		boolean gOrLChanged = true;
 		
 		String changeLog = "";		//Contains what has and hasn't been changed
@@ -95,6 +100,10 @@ public class UpdateUserController
 		if(newWeight.getText().isEmpty()|| newWeight.getText()==""){
 			changeLog += "Weight not changed! ";
 			wChanged=false;
+		}
+		if(newGoalWeight.getText().isEmpty()|| newGoalWeight.getText()==""){
+			changeLog += "Goal weight not changed! ";
+			gChanged=false;
 		}
 		if(newAge.getText().isEmpty()|| newAge.getText()==""){
 			changeLog += "Age not changed! ";
@@ -117,6 +126,10 @@ public class UpdateUserController
 				user.setAge(Integer.parseInt(newAge.getText()));
 				changeLog += "Age updated! ";
 			}
+			if(gChanged) {
+				user.setGoalWeight(Integer.parseInt(newGoalWeight.getText()));
+				changeLog += "Goal weight updated! ";
+			}
 			if(gOrLChanged){
 				user.setLoseOrGain(Integer.parseInt(loseGain.getSelectedToggle().getUserData().toString()));
 			}
@@ -124,7 +137,7 @@ public class UpdateUserController
 			user.calcCalories(user.getGender(),user.getAge(), user.getWeight(), user.getHeight(), user.getLoseOrGain());
 			data.updateUser(user);
 
-			//Alert that update was succesfull and what was updated and what wasn't
+			//Alert that update was succesful and what was updated and what wasn't
 			Alert notInt = new Alert(AlertType.NONE);
 			notInt.setAlertType(AlertType.CONFIRMATION);
 			notInt.setTitle("User updated");

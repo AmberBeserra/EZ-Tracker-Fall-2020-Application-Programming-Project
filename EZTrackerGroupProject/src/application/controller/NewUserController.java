@@ -16,10 +16,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
- * Controller for NewUser view, allows user to create new user.
+ * Controller for NewUser view, allows user to create new user. Validates input before passing to model classes.
+ * 
  * @author yit031
- * @version .9
- * @since 2020-11-24
+ * @version 1.0
+ * @since 2020-11-27
  */
 public class NewUserController
 {

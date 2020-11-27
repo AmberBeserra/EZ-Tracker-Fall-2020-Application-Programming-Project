@@ -22,9 +22,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
+ * This class controls NewFood view. Validates input before passing to model classes.
+ * 
  * @author yit031
- * @version .9
- * @since 2020-11-25
+ * @version 1.0
+ * @since 2020-11-27
  *
  */
 public class NewFoodController
@@ -208,7 +210,7 @@ public class NewFoodController
 	/**
 	 * Checks if string contains an int
 	 * @param str String to check for int
-	 * @return Tru if value is int false if not
+	 * @return true if value is int false if not
 	 */
 	private Boolean isInt(String str){
 		try 
