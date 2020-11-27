@@ -9,13 +9,54 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="monthlySummaryScene" prefHeight="370.0" prefWidth="406.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MonthlySummaryController">
+<AnchorPane fx:id="monthlySummaryScene" prefHeight="425.0" prefWidth="529.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MonthlySummaryController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c1e1ec" height="283.0" layoutX="18.0" layoutY="57.0" stroke="#c1e1ec" strokeType="INSIDE" width="376.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#72bcd4" height="47.0" stroke="#72bcd4" strokeType="INSIDE" width="406.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8f4f8" height="6.0" layoutY="44.0" stroke="#e8f4f8" strokeType="INSIDE" width="406.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#99cfe0" height="425.0" layoutX="426.0" stroke="#99cfe0" strokeType="INSIDE" width="103.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#c1e1ec" height="302.0" layoutX="18.0" layoutY="86.0" stroke="#c1e1ec" strokeType="INSIDE" width="397.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#72bcd4" height="47.0" stroke="#72bcd4" strokeType="INSIDE" width="529.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e8f4f8" height="17.0" layoutY="47.0" stroke="#e8f4f8" strokeType="INSIDE" width="529.0" />
       <Button fx:id="backButton" layoutX="14.0" layoutY="11.0" mnemonicParsing="false" onAction="#toUserScene" prefHeight="17.0" prefWidth="42.0" text="Back" />
-      <Label fx:id="currentUser" layoutX="338.0" layoutY="340.0" prefHeight="17.0" prefWidth="56.0" text="//" />
-      <PieChart fx:id="monthlyView" layoutX="14.0" layoutY="58.0" prefHeight="283.0" prefWidth="376.0" title="Monthly Summary" />
+      <Label fx:id="currentUser" layoutX="472.0" layoutY="388.0" prefHeight="17.0" prefWidth="56.0" text="//" />
+      <PieChart fx:id="monthlyView" layoutX="18.0" layoutY="86.0" prefHeight="302.0" prefWidth="397.0" title="Monthly Summary" />
+      <Label layoutX="18.0" layoutY="39.0" text="Average Calories:">
+         <font>
+            <Font name="Javanese Text" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="152.0" layoutY="39.0" text="Average Protein:">
+         <font>
+            <Font name="Javanese Text" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="276.0" layoutY="39.0" text="Average Carbs:">
+         <font>
+            <Font name="Javanese Text" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="avgCal" layoutX="117.0" layoutY="39.0" prefHeight="17.0" prefWidth="31.0" text="/ / / /">
+         <font>
+            <Font name="Javanese Text" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="avgProtien" layoutX="243.0" layoutY="39.0" prefHeight="17.0" prefWidth="31.0" text="/ / / /">
+         <font>
+            <Font name="Javanese Text" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="avgCarbs" layoutX="361.0" layoutY="39.0" prefHeight="17.0" prefWidth="31.0" text="/ / / /">
+         <font>
+            <Font name="Javanese Text" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="406.0" layoutY="39.0" text="Average Fat:">
+         <font>
+            <Font name="Javanese Text" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="avgFat" layoutX="476.0" layoutY="39.0" prefHeight="17.0" prefWidth="31.0" text="/ / / /">
+         <font>
+            <Font name="Javanese Text" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

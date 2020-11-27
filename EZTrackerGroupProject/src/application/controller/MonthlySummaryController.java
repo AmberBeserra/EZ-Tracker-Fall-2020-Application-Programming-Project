@@ -25,6 +25,15 @@ import javafx.stage.Stage;
  */
 public class MonthlySummaryController
 {
+	//Monthly average labels
+	@FXML
+	private Label avgCarbs; 
+	@FXML
+	private Label avgFat;
+	@FXML
+	private Label avgCal;
+	@FXML
+	private Label avgProtien;
 	//Pages
 	@FXML
 	private AnchorPane userScene;
