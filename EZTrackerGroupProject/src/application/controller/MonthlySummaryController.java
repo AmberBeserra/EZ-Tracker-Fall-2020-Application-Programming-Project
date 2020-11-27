@@ -1,8 +1,6 @@
 package application.controller;
 
 import java.io.IOException;
-
-
 import application.model.User;
 import application.model.UserData;
 import javafx.collections.FXCollections;
