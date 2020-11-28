@@ -1,8 +1,17 @@
 package application;
 	
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+
+import application.controller.LogInController;
+import application.model.Food;
+import application.model.Meal;
+import application.model.User;
+import application.model.UserData;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import javafx.util.converter.LocalDateStringConverter;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.fxml.FXMLLoader;
