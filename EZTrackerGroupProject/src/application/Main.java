@@ -9,7 +9,7 @@ import javafx.fxml.FXMLLoader;
 
 
 /**
- * Begins program
+ * Begins program.
  * 
  * @author yit031
  * @version 1.0
