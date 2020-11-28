@@ -83,7 +83,7 @@ public class MonthlySummaryController
 				new PieChart.Data("Fat", (NutritionInfo.totalFat(NutritionInfo.monthlyMeals(user))*9)));
 		
 		//Statement below can be used to debug daily meals
-		//NutritionInfo.printMeals(NutritionInfo.monthlyMeals(user));
+		NutritionInfo.printMeals(NutritionInfo.monthlyMeals(user));
 		
 		//sets labels to described information
 		currentUser.setText(user.getUserName());

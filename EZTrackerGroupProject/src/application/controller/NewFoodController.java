@@ -141,6 +141,12 @@ public class NewFoodController
 			out += ("Fat: " + f + " ");
 			out += ("Protein: " + pro + "\n");
 			output.appendText(out);
+			foodName.clear();
+			calories.clear();
+			carbs.clear();
+			fat.clear();
+			protein.clear();
+
 		}
 	}
 
