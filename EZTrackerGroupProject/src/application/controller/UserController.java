@@ -152,7 +152,7 @@ public class UserController
 				new PieChart.Data("Protein", (NutritionInfo.totalProtein(NutritionInfo.todaysMeals(user))*4)),
 				new PieChart.Data("Fat", (NutritionInfo.totalFat(NutritionInfo.todaysMeals(user))*9)));
 
-		NutritionInfo.printMeals(NutritionInfo.todaysMeals(user));
+		//NutritionInfo.printMeals(NutritionInfo.todaysMeals(user));
 		userlabel.setText(user.getName());
 		currentUser.setText(user.getUserName());
 		currentWeight.setText(Integer.toString(user.getWeight())+"lbs");

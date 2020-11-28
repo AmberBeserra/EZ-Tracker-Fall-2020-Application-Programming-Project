@@ -46,8 +46,8 @@ public class Main extends Application
 	 */
 	public static void main(String[] args) throws ClassNotFoundException, IOException
 	{
-		UserData data = new UserData();
-		data.printExisting();
+		//UserData data = new UserData();
+		//data.printExisting();
 		launch(args);
 
 	}
