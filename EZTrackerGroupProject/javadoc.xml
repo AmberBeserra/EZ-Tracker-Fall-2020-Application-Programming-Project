@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="javadoc">
+    <target name="javadoc">
+        <javadoc access="public" author="true" classpath="C:\Users\adnav\eclipse\plugins\org.eclipse.fx.ide.css.jfx8_1.2.0.201501301049.jar" destdir="doc" doctitle="EZTracker" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="application.controller,application.model,application" source="1.8" sourcepath="src" splitindex="true" use="true" version="true"/>
+    </target>
+</project>
